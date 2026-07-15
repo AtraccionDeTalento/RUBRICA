@@ -1,0 +1,32 @@
+# Dependencias / entornos
+node_modules/
+.venv/
+.venv2/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Builds
+dist/
+dist_electron/
+build/
+
+# Logs
+*.log
+*.log.err
+evaluacion_docente_log.txt
+
+# Datos sensibles / personales de candidatos (NO subir al repo)
+Cvs/
+LINKS/
+Extraccion de data/
+bot_evaluacion_docente/resultados/
+bot_evaluacion_docente/archivo_usuario_subido.xlsx
+Rubrica/Requerimiento*.xlsx
+docs/Ranking_*.xlsx
+docs/Analisis_*.xlsx
+**/Ranking_Docentes_*.xlsx
+**/Analisis_Detallado_*.xlsx
+
+# Config local del editor / claude
+.claude/

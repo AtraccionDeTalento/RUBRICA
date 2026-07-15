@@ -1,0 +1,214 @@
+{
+  "documento": "FICHA_DE_EVALUACION_PRACTITIONER_SELECCION_DOCENTE",
+  "version": "1.0",
+  "criterios": [
+    {
+      "id": "C1",
+      "nombre": "Formacion_Academica",
+      "max_puntaje": 50,
+      "categorias": [
+        {
+          "nivel": "Doctorado completo",
+          "descripcion": "Grado de doctor alineado al curso/asignatura",
+          "puntaje": 50
+        },
+        {
+          "nivel": "Doctorado en curso",
+          "descripcion": "Candidato a doctor",
+          "puntaje": 40
+        },
+        {
+          "nivel": "Maestria completa / Segunda Especializacion",
+          "descripcion": "Requisito minimo DTC y Practitioner",
+          "puntaje": 30
+        },
+        {
+          "nivel": "Bachiller / Licenciatura",
+          "descripcion": "Valido para DTP en cursos especificos",
+          "puntaje": 15
+        },
+        {
+          "nivel": "No cumple",
+          "descripcion": "No posee grado afin (menos 18 creditos)",
+          "puntaje": 0
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "nombre": "Experiencia_Docente_Universitaria",
+      "max_puntaje": 40,
+      "categorias": [
+        {
+          "nivel": "5+ años",
+          "descripcion": "Docencia universitaria sostenida",
+          "puntaje": 40
+        },
+        {
+          "nivel": "3-4 años",
+          "descripcion": "Experiencia universitaria / Tutoria hospitalaria",
+          "puntaje": 20
+        },
+        {
+          "nivel": "1-2 años",
+          "descripcion": "Nivel inicial",
+          "puntaje": 15
+        },
+        {
+          "nivel": "0 años",
+          "descripcion": "Sin experiencia",
+          "puntaje": 0
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "nombre": "Experiencia_Profesional",
+      "max_puntaje": 50,
+      "categorias": [
+        {
+          "nivel": "Alta Direccion / Gerencia",
+          "descripcion": "CEO, Director, Gerente, Director de Programa",
+          "puntaje": 50
+        },
+        {
+          "nivel": "Mando Medio",
+          "descripcion": "Jefaturas, supervisores, coordinadores",
+          "puntaje": 40
+        },
+        {
+          "nivel": "Profesional Senior",
+          "descripcion": "7-15+ años o expertise reconocido",
+          "puntaje": 30
+        },
+        {
+          "nivel": "Intermedio / Junior",
+          "descripcion": "2-7 años en el area",
+          "puntaje": 20
+        },
+        {
+          "nivel": "Analista / Operativo",
+          "descripcion": "Roles tecnicos u operativos",
+          "puntaje": 10
+        },
+        {
+          "nivel": "Sin experiencia",
+          "descripcion": "No registra experiencia",
+          "puntaje": 0
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "nombre": "Centro_de_Labores",
+      "max_puntaje": 20,
+      "categorias": [
+        {
+          "nivel": "Empresa Top",
+          "descripcion": "Top 500 Peru o corporacion reconocida",
+          "puntaje": 20
+        },
+        {
+          "nivel": "Empresa mediana / reconocida sectorialmente",
+          "descripcion": "Nivel profesional adecuado o startup de alto impacto",
+          "puntaje": 15
+        },
+        {
+          "nivel": "Empresa pequeña",
+          "descripcion": "Relevancia limitada / consultoras pequeñas especializadas",
+          "puntaje": 10
+        },
+        {
+          "nivel": "Emprendimiento / Sin empleo actual / Sin evidencia",
+          "descripcion": "No registra evidencia suficiente",
+          "puntaje": 0
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "nombre": "Produccion_Academica_Investigacion",
+      "max_puntaje": 20,
+      "categorias": [
+        {
+          "nivel": "Publicaciones Scopus/WoS",
+          "descripcion": "Autor o coautor",
+          "puntaje": 20
+        },
+        {
+          "nivel": "Libro o revista indexada",
+          "descripcion": "Evidencia academica formal",
+          "puntaje": 15
+        },
+        {
+          "nivel": "Investigacion",
+          "descripcion": "Investigacion o innovacion basica",
+          "puntaje": 10
+        },
+        {
+          "nivel": "Produccion inicial",
+          "descripcion": "Documento tecnico o informe",
+          "puntaje": 5
+        },
+        {
+          "nivel": "Sin evidencia",
+          "descripcion": "No registra",
+          "puntaje": 0
+        }
+      ]
+    }
+  ],
+  "perfiles": [
+    {
+      "perfil": "DTP",
+      "puntaje_minimo": 110,
+      "cumplimiento": {
+        "tipo": "puntaje",
+        "operador": ">=",
+        "valor": 110
+      },
+      "condicion": "Equilibrio docencia-profesion"
+    },
+    {
+      "perfil": "Practitioner",
+      "puntaje_minimo": 80,
+      "cumplimiento": {
+        "tipo": "puntaje",
+        "operador": ">=",
+        "valor": 80
+      },
+      "condicion": "Prioriza experiencia profesional"
+    }
+  ],
+  "formula_evaluacion": {
+    "puntaje_total": "C1 + C2 + C3 + C4 + C5",
+    "puntaje_maximo": 180
+  },
+  "ejemplo_ficha_mostrada": {
+    "C1": {
+      "seleccion": "Doctorado completo",
+      "puntaje": 50
+    },
+    "C2": {
+      "seleccion": "5+ años",
+      "puntaje": 40
+    },
+    "C3": {
+      "seleccion": "Mando Medio",
+      "puntaje": 40
+    },
+    "C4": {
+      "seleccion": "Empresa Top",
+      "puntaje": 20
+    },
+    "C5": {
+      "seleccion": "Sin evidencia",
+      "puntaje": 0
+    },
+    "total": 150,
+    "resultado": {
+      "DTP": true,
+      "Practitioner": true
+    }
+  }
+}

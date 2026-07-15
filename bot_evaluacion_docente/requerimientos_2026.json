@@ -1,0 +1,2498 @@
+[
+    {
+        "facultad": "CC EMP",
+        "carrera": "Economía",
+        "puesto": "Docente TC",
+        "cursos": "Principios de Economía, Corrientes del Pensamiento Economico"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Civil",
+        "puesto": "Docente TC",
+        "cursos": "Caminos; Estatica, Dinamica, Materiales de Construcción, ETC"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Civil",
+        "puesto": "Docente TP",
+        "cursos": "Asesor de tesis, Jurado de tesis"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Civil",
+        "puesto": "Docente TC",
+        "cursos": "Tecnología del Concreto"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Civil",
+        "puesto": "Docente TP",
+        "cursos": "Métodos Computacionales Para Ingeniería Civil"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "Dibujo Mecánico I"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Arte y Diseño Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "Diseño de la informacion                 Practicas editoriales del diseño     Proyecto en Direccion y Comunicación Proyecto Integrador"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "Estática Aplicada"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Arte y Diseño Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "Comunicación y Social Media"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Arte y Diseño Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "Fotografia Publicitaria / proyecto de fotografia / fotografia humana"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "Entrenamiento y Teoría Musical / Composición para Medios Audiovisuales II"
+    },
+    {
+        "facultad": "CGE",
+        "carrera": "CGE",
+        "puesto": "Docente TC",
+        "cursos": "Cusros de Mathemathicas"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "Cinemática y Cinética de Robots"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración Hotelera",
+        "puesto": "Docente TP",
+        "cursos": "Planificación y Diseño de Hoteles y Restaurantes"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TP",
+        "cursos": "English I -IV (CPEL)"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TC",
+        "cursos": "English I -IV"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TC",
+        "cursos": "English I -IV"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Psicología",
+        "puesto": "Docente TC",
+        "cursos": "INFORME PSICOLÓGICO\nPSICOPATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Psicología",
+        "puesto": "Docente TC",
+        "cursos": "PROCESOS COGNITIVOS I\nPROCESOS COGNITIVOS II\nPSICOLOGÍA DEL APRENDIZAJE\nHitsoria y Sistemas de la psioclogía"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Psicología",
+        "puesto": "Docente TC",
+        "cursos": "Psicología de la.prrsonalidad\nPsicopatologia"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Nivelación en matemática, Fundamentos de Matemática, Matemática, Matemática I."
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Nivelación en matemática, Fundamentos de Matemática, Matemática, Matemática I."
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "International Business",
+        "puesto": "Docente TP",
+        "cursos": "Investigación de mercados internacionales. Promoción y Gestión de Exportaciones Prospección de Mercados Internacionales"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración Hotelera",
+        "puesto": "Docente TP",
+        "cursos": "Fundamentos de la Industria de la Hospitalidad"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Nivelación en matemática, Fundamentos de Matemática, Matemática, Matemática I."
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "Lenguaje y Comunicación I\nLenguaje y Comunicación II"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Nivelación en matemática, Fundamentos de Matemática, Matemática, Matemática I."
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Nivelación en matemática, Fundamentos de Matemática, Matemática, Matemática I."
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TP",
+        "cursos": "CAPSTONE PROJECT IN INDUSTRIAL AND COMERCIAL ENGINEERING"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingenieria Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "APLICACIONES Y PRODUCTOS EMPRESARIALES PARA PROCESAMIENTO DE DATOS\nINGENIERÍA DE PROCESOS I"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TP",
+        "cursos": "INVESTIGACIÓN DE OPERACIONES\nSIMULACIÓN DE PROCESOS INDUSTRIALES"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería en Industrias Alimentarias",
+        "puesto": "Docente TC",
+        "cursos": "TECNOLOGÍA DE CEREALES\nQUÍMICA AGROALIMENTARIA\nQUÍMICA ANALÍTICA PARA ALIMENTOS\nTECNOLOGÍA DE ACEITES\nCIENCIA SENSORIAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "TECNOLOGÍA Y BIOTECNOLOGÍA (FOOD TECHNOLOGY)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "NUTRICIÓN CLINICA , NUTRICIÓN CLINICA II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "EPIDEMIOLOGÍA NUTRICIONAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "DIETÉTICA Y PROGRAMACIÓN DE DIETAS//  ENFERMEDADES CRÓNICAS Y PREVENCION DE LA SALUD"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Ambiental",
+        "puesto": "Docente TC",
+        "cursos": "Ecotoxicología\nContaminación de suelos\nEdafología"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Ambiental",
+        "puesto": "Docente TC",
+        "cursos": "Tratamiento de Aguas y Gestión de Efluentes Líquidos\nQuímica General"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "Lenguaje y Comunicación I\nLenguaje y Comunicación II"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "Estadística Descriptiva e Inferencia Estadística\nEstadística II\nInferencia Estadística"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "Estadística Descriptiva e Inferencia Estadística\nEstadística II\nInferencia Estadística"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "Gerencia de marketing /Marketing"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "planeamiento y dirección estrategica de marketing"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "retail/canales y distribución"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "Gerencia de marketing /Marketing"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "marketing"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "politica de precios /canales y distribución"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "International Business",
+        "puesto": "Docente TP",
+        "cursos": "Investigación de mercados internacionales. Promoción y Gestión de Exportaciones Prospección de Mercados Internacionales"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "International Business",
+        "puesto": "Docente TP",
+        "cursos": "International Trade I"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "marketing  -ingles"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración",
+        "puesto": "Docente TP",
+        "cursos": "Administración para los Negocios\nDiseño de procesos organizacionales"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Ética y Ciudadanía"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Arte y Diseño Empresarial",
+        "puesto": "Docente TC",
+        "cursos": "Introducción al Diseño Gráfico Digital\nDiseño I"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ADM Y FINANZAS",
+        "puesto": "Docente TP",
+        "cursos": "Econometría / Economía"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "CONTABILIDAD",
+        "puesto": "Docente TP",
+        "cursos": "Contabilidad general"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "CONTABILIDAD",
+        "puesto": "Docente TP",
+        "cursos": "Contabilidad general / Contabilidad de Costos"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "CONTABILIDAD",
+        "puesto": "Docente TP",
+        "cursos": "Contabilidad general /Contabilida d Intermedia"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "CONTABILIDAD",
+        "puesto": "Docente TP",
+        "cursos": "Contabilidad general/Contabilidad Intermedia"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "CONTABILIDAD",
+        "puesto": "Docente TP",
+        "cursos": "Auditoria operativa/Contabilidad General"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ADM Y FINANZAS",
+        "puesto": "Docente TP",
+        "cursos": "Finanzas"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ADM Y FINANZAS",
+        "puesto": "Docente TP",
+        "cursos": "Finanzas/Economía"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ADM Y FINANZAS",
+        "puesto": "Docente TP",
+        "cursos": "Finanzas"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Arte Culinario",
+        "puesto": "Docente TP",
+        "cursos": "1. COCINA MEDITARRÁNEA\n2. GARDE MANGER"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Agroindustrial",
+        "puesto": "Docente TP",
+        "cursos": "BIOTECNOLOGÍA ALIMENTARIA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "Estadística Descriptiva e Inferencia Estadística\nEstadística II\nInferencia Estadística"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Fundamentos en Competencias Digitales"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Fundamentos en Competencias Digitales"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "TÉCNICAS DE COMPORTAMIENTO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "COACHING NUTRICIONAL EN LA ACT. FÍSICA Y EL DEPORTE"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Atención Integral                               Procesos Químico-Biológicos y Nutrición                                    Bioquímica y Biología Molecular"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Nutrición y Estilos de Vida Saludable                       Bioquímica y Biología Molecular"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Atención Integral                               Procesos Químico-Biológicos y Nutrición                                    Bioquímica y Biología Molecular"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Atención Integral                               Procesos Químico-Biológicos y Nutrición                                    Microbiología y Parasitología"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Bioestadística                                       Métodos Estadísticos en Biociencias"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TC",
+        "cursos": "Tesis I                                                          Tesis II                                                            Oncología Médica                                                                                                   Integración Morfofuncional del Sistema Hematopoyético"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENTRENAMIENTO Y TEORIA MUSICAL"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "PROYECTO MUSICAL I, PROYECTO MUSICAL II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENTRENAMIENTO Y TEORIA MUSICAL/DOCENCIA MUSICAL I Y II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENTRENAMIENTO Y TEORÍA MUSICAL, COMPOSICIÓN PARA MEDIOS AUDIOVISUALES II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENTRENAMIENTO Y TEORÍA MUSICAL IV, V Y VI / INSTRUMENTO / ENSAMBLE V"
+    },
+    {
+        "facultad": "EMPRENDIM",
+        "carrera": "Dir. Emprendimiento e Innovación Educativa",
+        "puesto": "Docente TP",
+        "cursos": "IMAGINACIÓN DEL FUTURO Y CREATIVIDAD"
+    },
+    {
+        "facultad": "EMPRENDIM",
+        "carrera": "Dir. Emprendimiento e Innovación Educativa",
+        "puesto": "Docente TP",
+        "cursos": "IMAGINACIÓN DEL FUTURO Y CREATIVIDAD"
+    },
+    {
+        "facultad": "EMPRENDIM",
+        "carrera": "Dir. Emprendimiento e Innovación Educativa",
+        "puesto": "Docente TP",
+        "cursos": "IMAGINACIÓN DEL FUTURO Y CREATIVIDAD"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Lenguaje y Comunicación I, Lenguaje y Comunicación II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "MECANISMOS DE INFECCION Y DEFENSA,\nTESIS"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ATENCIÓN INTEGRAL,\nPROCESOS QUÍMICO-BIOLÓGICOS Y NUTRICIÓN, BIOESTADISTICA, METODOS ESTADÍSTICOS EN BIOCIENCIAS"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA ENDOCRINO Y REPRODUCTOR.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA CARDIO-CIRCULATORIO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Práctica y Profesionalismo I, Práctica y Profesionalismo III"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Gestión en Salud"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO MEDICO - CIRUGIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Diagnóstico Comunitario"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Diagnóstico Comunitario"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Cirugía y Traumatología"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Psicología",
+        "puesto": "Docente TC",
+        "cursos": "Métodos Estadísticos en Psicología"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TC",
+        "cursos": "Integración de Estructura y Función del Organismo Humano, Integración Morfofuncional del Sistema Hematopoyético, Integración Morfofuncional del Sistema Cardio-Circulatorio"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TC",
+        "cursos": "Integración Morfofuncional del Sistema Digestivo, Integración de Estructura y Función del Organismo Humano"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Enfermeria",
+        "puesto": "Docente TP",
+        "cursos": "Introducción a la Enfermería"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TP",
+        "cursos": "Derecho migratorio y refugiados"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TC",
+        "cursos": "Derecho migratorio y refugiados"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "CULINARIA Y NUTRICIÓN"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "PRÁC. PRE-PROF. EN NUTRICIÓN CLÍNICA/SERV. DE ALIMENT."
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Metodología de la Investigación Científica"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Metodología de la Investigación Científica"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Realidad nacional y globalización"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR - TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MÉDICO / EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MÉDICO (COORDINADOR TUTOR\nEXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Ciencias de la Actividad Fisica y del Deporte",
+        "puesto": "Docente TP",
+        "cursos": "ANÁLISIS DE DATOS EN EL ÁMBITO DE LA ACTIVIDAD FÍSICA Y EL DEPORTE"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "planeamiento y dirección de marketing"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "CIBERSEGURIDAD"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TC",
+        "cursos": "INSTRUMENTO /ENTRENAMIENTO Y TEORIA MUSICAL IV"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TC",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Software",
+        "puesto": "Docente TP",
+        "cursos": "INTELIGENCIA ARTIFICIAL GENERATIVA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "PRÁC. PRE-PROF. EN NUTRICIÓN CLÍNICA/SERV. DE ALIMENT."
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "Lenguaje y Comunicación I, Lenguaje y Comunicación II"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "Gestión de proyectos para computación"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Ciberseguridad",
+        "puesto": "Docente TP",
+        "cursos": "CIBERSEGURIDAD"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "SEGURIDAD INFORMATICA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "Gobierno TI"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO / ENTRENAMIENTO Y TEORÍA MUSICAL I, ENTRENAMIENTO Y TEORÍA MUSICAL II, ENTRENAMIENTO Y TEORÍA MUSICAL III"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "EMPRENDIM",
+        "carrera": "Dir. Emprendimiento e Innovación Educativa",
+        "puesto": "Docente TP",
+        "cursos": "IMAGINACIÓN DEL FUTURO Y CREATIVIDAD"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TP",
+        "cursos": "PRINCIPIOS DE ORGANIZACIÓN DEL ESTADO"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente TP",
+        "cursos": "Introducción a la Gerencia Legal"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente TP",
+        "cursos": "Derecho colectivo de trabajo o curso de Laboral"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente TP",
+        "cursos": "Derecho tributario"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente TP",
+        "cursos": "Proyecto integrador. Seminario de Investigaciòn I y II de segunda especialidad"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente TP",
+        "cursos": "Cursos de segunda especialidad de Derecho Financiero  o jurado de titulación"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ING INDUSTRIAL",
+        "puesto": "Docente TP",
+        "cursos": "TOTAL QUALITY MANAGEMENT (TQM / SEGURIDAD Y NORMAS ISO PARA INGENIERÍA"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ING EMPRESARIAL Y DE SISTEMAS",
+        "puesto": "Docente TP",
+        "cursos": "EVALUACION DE PROYECTOS"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "ING EMPRESARIAL Y DE SISTEMAS",
+        "puesto": "Docente TP",
+        "cursos": "EVALUACION DE PROYECTOS"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I, LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I, LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I, LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "PRÁCTICAS PRE-PROFESIONALES EN LA COMUNIDAD"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "GRABACION Y MEZCLA II, DISEÑO DE SONIDO"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TP",
+        "cursos": "Italiano - Español"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TP",
+        "cursos": "English I -IV (CPEL)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "PRÁC. PRE-PROF. EN NUTRICIÓN CLÍNICA/SERV. DE ALIMENT."
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administraciòn y Emprendimiento",
+        "puesto": "Docente TP",
+        "cursos": "OPORTUNIDADES DE NEGOCIO"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "FUNDAMENTOS EN COMPETENCIAS DIGITALES"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "FISICA GENERAL, FISICA I, FISICA II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "INSTRUMENTO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "ESTUDIOS GENERALES",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENSAMBLE I"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración Hotelera",
+        "puesto": "Docente TP",
+        "cursos": "STRATEGIC HOSPITALITY MARKETING"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración Hotelera",
+        "puesto": "Docente TP",
+        "cursos": "GERENCIA COMERCIAL HOTELERA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Agroindustrial",
+        "puesto": "Docente TP",
+        "cursos": "FUNDAMENTOS DE INGENIERÍA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería en industrias alimentarias",
+        "puesto": "Docente TP",
+        "cursos": "BIOTECNOLOGÍA ALIMENTARIA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería en industrias alimentarias",
+        "puesto": "Docente TC",
+        "cursos": "TÓPICOS DE PROCESAMIENTO AGROALIMENTARIO\nTECNOLOGÍA AGROALIMENTARIA I\nTECNOLOGÍA DE PRODUCTOS LÁCTEOS Y CÁRNICOS"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "INTRODUCCIÓN A LA INGENIERÍA BIOMÉDICA"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración en Turismo",
+        "puesto": "Docente TP",
+        "cursos": "PROMOCIÓN TURÍSTICA"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración en Turismo",
+        "puesto": "Docente TP",
+        "cursos": "COOPERACIÓN INTERNACIONAL EN TURISMO"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TP",
+        "cursos": "GESTIÓN DE RESIDUOS INDUSTRIALES"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "CÁLCULO DE VARIAS VARIABLES\nCÁLCULO DE UNA VARIABLE\nMATEMÁTICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "AMERICAN LITERATURE"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "AMERICAN LITERATURE"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "ÉTICA Y CIUDADANÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Psicología",
+        "puesto": "Docente TP",
+        "cursos": "Bases Neurobiológicas de la Conducta\nNeuropsicología\nInstrumentos de Evaluación Psicométrica"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TC",
+        "cursos": "desarrollo y gerencia de producto, marketing, gerencia de marketing y marketing industrial y b2b"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO ROTATORIO I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\nDocente Hospitalario"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO MEDICO - GINECOLOGIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Bioestadística, Métodos Estadísticos en Biociencias, Tesis"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "TESIS I y TESIS II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Bioestadística y Métodos Estadísticos en Biociencias"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Integración Morfo funcional del sistema excretor"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración y Finanzas Corporativas",
+        "puesto": "Docente TP",
+        "cursos": "Matemática Financiera"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "E-Marketing for business"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "marketing global-ingles"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Estadística Descriptiva e Inferencia Estadística\nEstadística II\nInferencia Estadística"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TP",
+        "cursos": "GEOPOLITICA Y LA GOBERNANZA GLOBAL"
+    },
+    {
+        "facultad": "COMUNICACIÓN",
+        "carrera": "Comunicaciones",
+        "puesto": "Docente TP",
+        "cursos": "PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL i"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "Docente Tp",
+        "cursos": "NEGOCIACIÓN Y ARBITRAJE"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Arte Culinario",
+        "puesto": "Docente TP",
+        "cursos": "TÉCNICAS Y PROCESOS DE PANIFICACIÓN I y II"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración y Finanzas Corporativas",
+        "puesto": "Docente TC",
+        "cursos": "International Finance, Evaluación de proyectos, Proyecto integrador"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "ADMINISTRACIION",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "REALIDAD NACIONAL Y GLOBALIZACIÓN"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "International Business",
+        "puesto": "Docente TP",
+        "cursos": "INTERNATIONAL OPERATIONS"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "DESARROLLO HUMANO"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "INGENIERIA EMPRESARIAL Y DE SISTEMAS",
+        "puesto": "Docente TP",
+        "cursos": "PROYECTO INTEGRADOR PARA INGENIERIA"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "INGENIERIA EMPRESARIAL Y DE SISTEMAS",
+        "puesto": "Docente TP",
+        "cursos": "PROYECTO INTEGRADOR PARA INGENIERIA"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "ADMINISTRACIÓN HOTELERA",
+        "puesto": "Docente TP",
+        "cursos": "Relaciones Públicas y Habilidades Sociales en los Negocios"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "PENSAMIENTO MATEMÁTICO\nCÁLCULO DE UNA VARIABLE\nMATEMÁTICA"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Arte Culinario",
+        "puesto": "Docente TC",
+        "cursos": "Pastelería - Panadería/ Introducción al arte culinario / Bombones y manejo de chocolate / Fundamentos y técnicas de Pastelería II / Cocina Mediterránea"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "REALIDAD NACIONAL Y GLOBALIZACIÓN"
+    },
+    {
+        "facultad": "EDUCACION",
+        "carrera": "Educación Inicial - Secundaria",
+        "puesto": "Docente TP",
+        "cursos": "Planificación de clases y actividades"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I/ LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Administración Hotelera",
+        "puesto": "Docente TP",
+        "cursos": "CREATIVIDAD E INNOVACIÓN: DESIGN THINKING"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I/ LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "ENTRENAIMIENTO Y TEORÍA MUSICAL IV/APRECIACIÓN MUSICAL/ENTRENAMIENTO Y TEORÍA MUSICAL II"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "CIRCUITOS DIGITALES  MICROCONTROLADORES"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "DINÁMICA APLICADA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Bioestadística. \nMétodos Estadísticos en Biociencias"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Tecnología Médica /T.F. y R.",
+        "puesto": "Docente TP",
+        "cursos": "Introduccion en Tecnologia Médica en Terapia Fisica y Rehabilitación"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "ADMINISTRACIÓN HOTELERA",
+        "puesto": "Docente TP",
+        "cursos": "ADMINISTRACIÓN DE OPERACIONES EN SERVICIOS\nCOSTOS Y PRESUPUESTOS\nHOSPITALITY MANAGEMENT CAPSTONE\nGESTIÓN DE SERVICIOS TURÍSTICOS"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "ADMINISTRACIÓN",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "Matemática, Fundamentos de Matemática, Matemática I, Matemática II, Algebra Lineal, Ecuaciones diferenciales"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TP",
+        "cursos": "SEMINARIO I"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "RELACIONES INTERNACIONALES",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN INTERNAC. Y COMERCIO EXTERIOR"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "Diseño Digital I"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "ANALISIS DE MERCADO AVANZADA"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I/ LENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "FUNDAMENTOS EN COMPETENCIAS DIGITALES"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "AMERICAN LITERATURE"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Marketing",
+        "puesto": "Docente TP",
+        "cursos": "MARKETING"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración y Finanzas Corporativas",
+        "puesto": "Docente TP",
+        "cursos": "Matematica FInanciera"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Economía y Negocios Internacionales",
+        "puesto": "Docente TP",
+        "cursos": "Global Economy"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería en Industrias Alimentarias",
+        "puesto": "Docente TP",
+        "cursos": "NUTRICIÓN, SALUD Y ALIMENTOS FUNCIONALES"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "PSICOLOGÍA APLICADA A LA NUTRICÓN"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y dietética",
+        "puesto": "Docente TP",
+        "cursos": "NEUROCIENCIAS APLICADAS A LA NUTRICIÓN"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "EXTERNADO PEDIATRIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "GESTION EN SALUD.  SALUD PUBLICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "Integración de Estructura y Función del Organismo Humano"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "BOESTADISTICA.\nMETODOS ESTADISTICOS. EPIDEMIOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACION MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO. INTEGRACION MORFOFUNCIONAL DEL SISTEMA HEMATOPOYETICO.  INTEGRACION MORFOFUNCIONAL DEL SISTEMA ENDOCRINO Y REPRODUCTOR. REFORZAMIENTO INTERNADO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACION DE ESTRUCTURA Y FUNCIÓN DEL ORGANISMO HUMANO.\nINTEGRACION MORFOFUNCIONAL SISTEMA NERVISOSO\nCARDIO CIRCULATORIO\nSISTEMA RESPIRATORIO\nEMATOPOYETICO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "Arte Culinario",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Marketing y Gestiòn Comercial",
+        "puesto": "Docente TP",
+        "cursos": "GESTION DE MARKETING ESTRATEGICO"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Marketing y Gestiòn Comercial",
+        "puesto": "Docente TP",
+        "cursos": "INTRODUCCION EMPRESARIAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "MICROBIOLOGÍA.  MÉTODOS ESTADÍSTICOS. BIOESTADISTICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "SALUD GLOBAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": ""
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "DIAGNOSTICO COMUNITARIO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "TESIS I y TESIS II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "TESIS I y TESIS II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "TESIS I y TESIS II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (COORDINADOR-TUTOR)"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Matemática, fundamentos de Matemática, NIvelacion en matemática"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Ambiental",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "Circuitos Digitales | Electrónica de Potencia"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "ESTUDIOS GENERALES",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. SIstemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "Arquitectura del computador"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Software",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Sistemas de Información",
+        "puesto": "Docente TP",
+        "cursos": "Redes y telecomunicaciónes"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Enfermeria",
+        "puesto": "Docente TP",
+        "cursos": "Anatomia y Fisiología para Enfermeria I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES 1. ESPECIALIDADES 2.  INTEGRACIÓN DE ESTRUCTURA Y FUNCIÓN DEL ORGANISMO HUMANO. \nEXTERNADO EN MEDICINA"
+    },
+    {
+        "facultad": "COMUNICACIÓN",
+        "carrera": "COMUNICACIONES",
+        "puesto": "DOCENTE TP",
+        "cursos": "COMUNICACIÓN EMPRESARIAL"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "Fundamentos en Competencias Digitales"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Agroindustrial",
+        "puesto": "Docente TP",
+        "cursos": "OPERACIONES UNITARIAS FÍSICAS\nOPERACIONES UNITARIAS FISICOQUÍMICAS"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "GESTIÓN COMERCIAL DE CIENCIAS Y TECNOLOGÍA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ing. Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "GESTIÓN DE PROYECTOS PARA ING. EMPRESARIAL"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "TALLER DE DISEÑO I: ELEMENTOS"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "TALLER DE DISEÑO I: ELEMENTOS"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "TALLER DE DISEÑO I: ELEMENTOS"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "TALLER DE DISEÑO IV: ESPACIOS URBANOS Y TERRITORIALES"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Ciencias de la Actividad Fisica y del Deporte",
+        "puesto": "Docente TP",
+        "cursos": "DEPORTES DE COMBATE"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "DISEÑO URBANO"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "PROCESOS DE LA ARQUITECTURA PERUANA (INGLES)"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "EXPRESIÓN GRÁFICA ANALÓGICA 3"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TP",
+        "cursos": "PROYECTO INTEGRADOR"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "ARQUITECTURA, URBANISMO Y TERRITORIO",
+        "puesto": "Docente TC",
+        "cursos": "PROYECTOR INTEGRADOR/TALLER DE DISEÑO 3-SISTEMAS/TALLER DE DISEÑO 5 CIUDADES/PLANEAMIENTO Y GESTION URBANA/"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "BIOESTADISTICA.  METODOS ESTADISTICOS.\nATENCION INTEGRAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA CARDIO-CIRCULATORIO. INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO. INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\nDocente Hospitalario"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "DIAGNOSTICO COMUNITARIO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGÍA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\nDocente Hospitalario"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\n(Sede hospitalaria)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "EDUCACION",
+        "carrera": "EDUCACIÓN INICIAL  Y EDUCACIÓN SECUNDARIA",
+        "puesto": "DOCENTE TC",
+        "cursos": "CURSOS GENERALES - EDUCACIÓN"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "Metodología de la Investigación Científica"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA\n(Sede hospitalaria)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "BIOQUIMICA Y BILOGIA MOLECULAR"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "CIRUGIA Y TRAUMATOLOGÍA\n(Sede hospitalaria)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\nREFORZAMIENTO INTERNADO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ONCOLOGIA MEDICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ONCOLOGIA MEDICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "REFORZAMIENTO DE INTERNADO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Arte y Diseño Empresarial",
+        "puesto": "Docente TP",
+        "cursos": "Taller de tesis"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "EMPRENDIMIENTO / IDENTIDAD, IMAGEN Y PORTAFOLIO MUSICAL"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "INGENIERÍA MECATRÓNICA",
+        "puesto": "DOCENTE TP",
+        "cursos": "ESTÁTICA / PROYECTO DE INGENIERÍA ROBÓTICA"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Música",
+        "puesto": "Docente TP",
+        "cursos": "FUNDAMENTOS DE LA PRODUCCIÓN AUDIOVISUAL PARA MÚSICOS"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "PRINCIPIOS E INTRODUCCIÓN A LA MEDICINA P4"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "PRINCIPIOS E INTRODUCCIÓN A LA MEDICINA P4"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "PRINCIPIOS E INTRODUCCIÓN A LA MEDICINA P4"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TP",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TP",
+        "cursos": "INTRODUCCIÓN A LA INGENIERÍA INDUSTRIAL Y COMERCIAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "CAFyD",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Agroindustrial",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Civil",
+        "puesto": "Docente TP",
+        "cursos": "Asesor de tesis, Jurado de tesis"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Mecatrónica",
+        "puesto": "Docente TP",
+        "cursos": "Electrónica de potencia"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I\n(Sede hospitalaria)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "BIOESTADISTICA.  METODOS ESTADISTICOS. BIOQUIMICA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL ENDOCRINO Y REPRODUCTOR.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA CARDIO-CIRCULATORIO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA DIGESTIVO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA EXCRETOR.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA NERVIOSO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO."
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "CAFyD",
+        "puesto": "Docente TC",
+        "cursos": "Teoría y Practica del entrenamiento deportivo\nDirección y Planificación deportiva\nIdentificacióny Detección de Talentos Deportivos\nPedagogía Aplicada al deporte y la Actividad Física\nAnálisis de Datos en el Ámbito de la actividad Física y el Deporte"
+    },
+    {
+        "facultad": "FHTG",
+        "carrera": "GESTIÓN E INNOVACIÓN EN GASTRONOMÍA",
+        "puesto": "Docente TP",
+        "cursos": "Ciencia de los alimentos y bebidas"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "E-LEARNING"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "PLANIFICACIÓN Y DISEÑO CURRICULAR"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "DISEÑO DE MATERIALES EDUCATIVOS"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "PLANAMIENTO ESTRATÉGICO EN INSTITUCIONES EDUCATIVAS"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "E-LEARNING"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Educación",
+        "puesto": "Docente TP",
+        "cursos": "TEORÍA DE LA EDUCACIÓN"
+    },
+    {
+        "facultad": "CPEL",
+        "carrera": "Psicología",
+        "puesto": "Docente TP",
+        "cursos": "BASES NEUROBIOLOGICAS DE LA CONDUCTA"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento de Ciencias e Ingenieria",
+        "puesto": "Docente TC",
+        "cursos": "Estadística Descriptiva e Inferencia Estadística\nEstadística II\nInferencia Estadística"
+    },
+    {
+        "facultad": "CLS",
+        "carrera": "Idiomas",
+        "puesto": "Docente TC",
+        "cursos": "English I -IV"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TC",
+        "cursos": "DIAGNÓSTICO COMUNITARIO.\nESPECIALIDADES I.\nESPECIALIDAD II"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Ingeniería Industrial y Comercial",
+        "puesto": "Docente TC",
+        "cursos": "Seguridad higiene industrial Investigación de Operaciones"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "Estudios Generales",
+        "puesto": "Docente TC",
+        "cursos": "Lenguaje y Comunicación I\nLenguaje y Comunicación II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MEDICO (TUTOR)"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA ENDOCRINO Y REPRODUCTOR.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO.\nINTEGRACIÓN DE ESTRUCTURA Y FUNCIÓN DEL ORGANISMO HUMANO"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TP",
+        "cursos": "QUÍMICA GENERAL"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO MÉDICO (TUTOR)"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "DOCENTE TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA ENDOCRINO Y REPRODUCTOR.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO.\nINTEGRACIÓN DE ESTRUCTURA Y FUNCIÓN DEL ORGANISMO HUMANO"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "ESTUDIOS GENERALES",
+        "puesto": "Docente TC",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I\nLENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "DERECHO",
+        "carrera": "DERECHO",
+        "puesto": "DOCENTE TP",
+        "cursos": "INTRODUCCIÓN A LA FILOSOFÍA DE DERECHO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "DIAGNOSTICO COMUNITARIO"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "Departamento Académico de Ciencias e Ingeniería",
+        "puesto": "Docente TC",
+        "cursos": "FUNDAMENTOS EN COMPETENCIAS DIGITALES"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "CARRERA DE ING. INDUST. Y COMERC.",
+        "puesto": "Docente TC",
+        "cursos": "Introducción a los modelos estocásticos, Simulación de procesos industriales y simulación de negocios"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "SISTEMAS DE LA INFORMACIÓN",
+        "puesto": "Docente TP",
+        "cursos": "INVESTIGACIÓN OPERATIVA I\nPROYECTO FINAL DE CARRERA I"
+    },
+    {
+        "facultad": "ARQ",
+        "carrera": "Arquitetcura, Urbanismo y Territorio",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "Administración",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "CARRERA ING. INDUSTRIAL Y COMERCIAL",
+        "puesto": "Docente TC",
+        "cursos": "nan"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "INGENIERIA DE SOFTWARE",
+        "puesto": "Docente TP",
+        "cursos": "ANÄLISIS Y VISUALIZACIÖN DE DATOS"
+    },
+    {
+        "facultad": "ING",
+        "carrera": "ING AGROINDUSTRIAL",
+        "puesto": "Docente TP",
+        "cursos": "AGRIBUSINESS"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "ESTUDIOS GENERALES",
+        "puesto": "Docente TC",
+        "cursos": "LENGUAJE Y COMUNICACIÓN I\nLENGUAJE Y COMUNICACIÓN II"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Enfermería",
+        "puesto": "Docente TP",
+        "cursos": "Anatomia y Fisiología para Enfermería I"
+    },
+    {
+        "facultad": "COMUNICACIÓN",
+        "carrera": "COMUNICACIONES",
+        "puesto": "Docente TP",
+        "cursos": "COMUNICACIÓN EMPRESARIAL"
+    },
+    {
+        "facultad": "CC EMP",
+        "carrera": "ADMINISTRACIÓN",
+        "puesto": "Docente TP",
+        "cursos": "Gerencia de Capital Humano, Atracción e Identificación del Talento, Evaluación de Desempeño por Indicadores de Gestión y Estrategias y Capacidades para la Gestión del Talento"
+    },
+    {
+        "facultad": "ARTES Y HUM",
+        "carrera": "MUSICA",
+        "puesto": "Docente TP",
+        "cursos": "COMPOSICIÓN"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA HEMATOPOYÉTICO.\nINTEGRACIÓN MORFOFUNCIONAL DEL SISTEMA RESPIRATORIO"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "APLICACIÓN CLÍNICA DE LA MEDICINA P4.\nTERAPEUTICA INTEGRADA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO EN GINECOLOGIA Y OBSTETRICIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO EN PEDIATRIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO EN MEDICINA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "ESPECIALIDADES I"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Nutrición y Dietetica",
+        "puesto": "Docente TC",
+        "cursos": "EDUCACIÓN ALIMENTARIA, VALORACIÓN NUTRICIONAL, PRÁCTICAS EN COMUNIDAD, NUTRICIÓN PUBLICA Y SITUACIÓN ALIMENTARIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INTERNADO EN PEDIATRIA"
+    },
+    {
+        "facultad": "CCSALUD",
+        "carrera": "Nutrición y Dietética",
+        "puesto": "Docente TC",
+        "cursos": "EDUCACIÓN ALIMENTARIA, VALORACIÓN NUTRICIONAL, PRÁCTICAS EN COMUNIDAD, NUTRICIÓN PUBLICA Y SITUACIÓN ALIMENTARIA"
+    },
+    {
+        "facultad": "CC SALUD",
+        "carrera": "Medicina Humana",
+        "puesto": "Docente TP",
+        "cursos": "INGLES MEDICO"
+    },
+    {
+        "facultad": "PGx",
+        "carrera": "PSICOLOGIA",
+        "puesto": "Docente TP",
+        "cursos": "PSICOLOGIA DEL APRENDIZAJE"
+    },
+    {
+        "facultad": "PGx",
+        "carrera": "Doble Grado",
+        "puesto": "Docente TP",
+        "cursos": "FRENCH I"
+    }
+]

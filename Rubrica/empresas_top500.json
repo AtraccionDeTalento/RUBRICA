@@ -1,0 +1,2007 @@
+{
+  "criterio": "C4",
+  "nombre": "Centro de Labores - Empresas Top",
+  "puntaje": 20,
+  "empresas": [
+    {
+      "empresa": "PRIMAX",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INRETAIL PERU CORP Y SUB",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CREDICORP PERU S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOUTHERN PERU COPPER CORPORATION, SUCURSAL DEL PERÚ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ESSALUD",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PETROPERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO DE CREDITO DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ANTAMINA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ALICORP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD MINERA CERRO VERDE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FIT CAPITAL SOCIEDAD AGENTE DE BOLSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INRETAIL PHARMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REFINERIA LA PAMPILLA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SUPERMERCADOS PERUANOS SOCIEDAD ANONIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INTERCORP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO GLORIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TELEFONICA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA LAS BAMBAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HIPERMERCADOS TOTTUS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CENCOSUD",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "RIMAC SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRAFIGURA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GLENCORE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FERREYCORP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LECHE GLORIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO BBVA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AMERICA MOVIL PERU S.A.C",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VOTORANTIM METAIS - CAJAMARQUILLA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SHOUGANG HIERRO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HUDBAY PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BELCORP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INTERBANK",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REPSOL COMERCIAL SAC",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UCP BACKUS Y JOHNSTON",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PACIFICO COMPAÑIA DE SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SCOTIABANK",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA MINERA ANTAPACCAY",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNION ANDINA DE CEMENTOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "YANBAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AENZA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUANA DE COMBUSTIBLES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ENTEL PERÚ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FERREYROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LUZ DEL SUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ENEL DISTRIBUCION PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PACIFICO COMPAÑIA DE SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SAMSUNG ELECTRONICS PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION ACEROS AREQUIPA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERALES DEL SUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO RIPLEY",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PLUSPETROL PERU CORPORATION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SAGA FALABELLA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FALABELLA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SAN FERNANDO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA DE MINAS BUENAVENTURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HOCHSCHILD MINING (PERU)",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ARCA CONTINENTAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION LINDLEY S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CREDICORP CAPITAL SOCIEDAD AGENTE DE BOLSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA YANACOCHA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TOYOTA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRANSPORTADORA DE GAS DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SODEXO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "KALLPA GENERACION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO DE LA NACION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GAS NATURAL DE LIMA Y CALLAO S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MIBANCO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SODIMAC",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NEXA RESOURCES PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VOLCAN CIA MINERA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LG ELECTRONICS PERU S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SEDAPAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LA POSITIVA SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NESTLE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTROPERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECNOLOGICA DE ALIMENTOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COAZUCAR DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HUAWEI DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA CHINALCO PERÚ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ENGIE ENERGIA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINSUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MIFARMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA ARES PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CIA MINERA PODEROSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HUNT OIL COMPANY OF PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "QUIMICA SUIZA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERU LNG",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LOUIS DREYFUS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA BARRICK MISQUICHILCA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INFRAESTRUCTURA GRANA Y MONTERO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MAKRO SUPERMAYORISTA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TELEFONICA MULTIMEDIA S.A.C",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONTILATIN DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DIVEIMPORT",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AUTOMOTORES GILDEMEISTER-PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "KIMBERLY-CLARK PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ENEL GENERACIÓN PERÚ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA SIDERURGICA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LATAM AIRLINES PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CEMENTOS PACASMAYO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SODIMAC-MAESTRO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONSORCIO TRANSMANTARO S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "IBM DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "RANSA COMERCIAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VOLVO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAMPOSOL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GOLD FIELDS LA CIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COESTI",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INDUSTRIAS SAN MIGUEL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MAPFRE PERU COMPAÑÍA DE SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ADM ANDINA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COSAPI",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "nan",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CREDISCOTIA FINANCIERA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "KOMATSU-MITSUI",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO SANDOVAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REDONDOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PLUSPETROL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COPEINCA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INGRAM MICRO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PROCTER & GAMBLE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PACIFICO SALUD EPS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONECTA RETAIL S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "RIMAC E.P.S",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIQUE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PESQUERA EXALMAR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "STRACON",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HIDRANDINA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INVERSIONES CERAMICA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE AHORRO Y CREDITO DE AREQUIPA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PALMAS DEL ESPINO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REPSOL MARKETING",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CARGILL AMERICAS PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO DELTRON",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO INTERAMERICANO DE FINANZAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA AURIFERA RETAMAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOLITALIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AJEPER",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PESQUERA HAYDUK",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "KIA IMPORT PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DERCO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO PICHINCHA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PRODUCTOS TISSUE DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VIETTEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD MINERA EL BROCAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CMAC – HUANCAYO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONSTRUCCION Y ADMINISTRACION -CASA CONTRATISTA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REPSOL EXPLORACION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "IMPORTACIONES HIRAOKA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VITAPRO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TIENDAS PERUANAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PROCESADORA SUDAMERICANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CHIMU AGROPECUARIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LA TINKA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "YURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOLGAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PONTIFICIA UNIVERSIDAD CATOLICA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AJE GROUP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DISTRIBUIDORA DROGUERIA ALFARO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CETCO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD AGRICOLA VIRU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOLINOS & CIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRUPAL GRUPO GLORIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SONATRACH PERU CORPORATION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INTERSEGURO COMPAÑIA DE SEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DANPER",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA MINERA MISKI MAYO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUFARMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PESQUERA DIAMANTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA EDITORA EL COMERCIO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE AHORRO Y CREDITO DE PIURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO FALABELLA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "OPP FILM",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LA POSITIVA SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CERVECERIA SAN JUAN",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AZZARO TRADING",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TELEATENTO DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GR HOLDING",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MEDIA NETWORKS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MAPFRE PERU COMPAÑIA DE SEGUROS Y REASEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ORAZUL ENERGY PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTRONOROESTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOLY-COP ADESUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA PERUANA DE RADIODIFUSION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "RED DE ENERGIA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INDECO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNION DE CONCRETERAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CIA MINERA COIMOLACHE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPARTAMOS FINANCIERA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CERAMICA LIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SAN MIGUEL INDUSTRIAS PET",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MONDELEZ PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INVERSIONES CENTENARIO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SIEMENS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTROCENTRO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BRITISH AMERICAN TOBACCO DEL PERU HOLDINGS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PLUSPETROL LOTE 56",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO SANTA ELENA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TAILOY",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION PERUANA DE PRODUCTOS QUIMICOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRANS AMERICAN AIR LINES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "YARA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD CESAR VALLEJO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECNOFIL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DIVISO GRUPO FINANCIERO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPLEJO AGROINDUSTRIAL BETA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INGENIEROS CIVILES Y CONTRATISTAS GENERALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION CERVESUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LA VIGA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD PRIVADA DEL NORTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "QUIMPAC S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LAIVE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD TECNOLOGICA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LA ARENA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ALBIS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "JJC CONTRATISTAS GENERALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DEPRODECA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CASA GRANDE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ROMERO TRADING",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTRO ORIENTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EXSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EXXONMOBIL DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INTCOMEX PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CLINICA INTERNACIONAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD ELECTRICA DEL SUR OESTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ORICA MINING SERVICES PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SUCDEN PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PRODUCTOS PARAISO DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "G.W. YICHANG & CIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CIA MINERA CASAPALCA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "QUIMTIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "STATKRAFT PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE AHORRO Y CREDITO CUSCO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD DE LIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MC AUTOS DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO PANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CFG INVESTMENT",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD MINERA CORONA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EURO MOTORS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUANA DE ESTACIONES DE SERVICIOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LOS PORTALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HEWLETT - PACKARD PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LIMA AIRPORT PARTNERS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO RIPLEY PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FONDO MIVIVIENDA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FARMINDUSTRIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA LAYTARUMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERALES HUANCARUNA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LIMAUTOS AUTOMOTRIZ DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIMAQ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ATLAS COPCO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FAMESA EXPLOSIVOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMERCIAL DEL ACERO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONSORCIO MINERO HORIZONTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRABAJOS MARITIMOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUPLAST",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MEDIFARMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTRO NORTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AUSTRAL GROUP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD DE SAN MARTIN DE PORRES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MAXIMA INTERNACIONAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD ELECTRICA DEL SUR OESTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PRODUCTOS DE ACERO CASSADO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOCIEDAD AGENTE DE BOLSA SURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TELESERVICIOS POPULARES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FINANCIERA CONFIANZA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECSUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA MINERA LOS QUENUALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CIA MINERA RAURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FINANCIERA OH",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION FINANCIERA DE DESARROLLO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERURAIL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GENERAL MOTORS PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FRECUENCIA LATINA REPRESENTACIONES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SCANIA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOTA-ENGIL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRADI",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECPETROL DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUANA DE MOLDEADOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MONTANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPLEJO HOSPITALARIO SAN PABLO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD ALAS PERUANAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SEAFROST",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIP.AHORRO Y CREDITO SULLANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PRODUCTOS AVON",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REPRESENTACIONES DECO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ZETA GAS ANDINO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DP WORLD CALLAO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PROTECTA S.A. COMPAÑIA DE SEGUROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CENTELSA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MANPOWER PROFESSIONAL SERVICES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRANSPORTES 77",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PAPELERA NACIONAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ANDINA TRADE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SEGUROS SURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COLGATE-PALMOLIVE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NEPTUNIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "YOBEL SCM",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNILEVER ANDINA PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA OPERADORA DE GAS AMAZONAS- COGA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MACHU PICCHU FOODS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INRETAIL SHOPPING MALLS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REAL PLAZA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VERFRUT",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTRODUNAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DUNAS ENERGIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAñIA MINERA ARGENTUM",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EUROSHOP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAñIA MINERA CONDESTABLE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA RURAL DE AHORRO Y CRÉDITO CENCOSUD SCOTIA PERÚ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA LA ZANJA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AJINOMOTO DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CLINICA RICARDO PALMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA VETA DORADA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EL PEDREGAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PRIMA AFP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TERMINAL INTERNACIONAL DEL SUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO GNB PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INDUSTRIAS ELECTRO QUIMICAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DUPREE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ABB",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GANDULES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TALMA SERVICIOS AEROPORTUARIOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "3M PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ZINC INDUSTRIAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPLEJO AGROINDUSTRIAL CARTAVIO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EPSON PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "QUIMERA HOLDING GROUP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FINANCIERA EFECTIVA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LIMA GAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA GOODYEAR DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BAYER",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HERMES TRANSPORTES BLINDADOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AFP INTEGRA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SANIHOLD",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE AHORRO Y CREDITO DE TRUJILLO SA - CAJA TRUJILLO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HONDA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INVERSIONES PALO ALTO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FARMACIAS PERUANAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ANDINA DE RADIODIFUSION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TERMOCHILCA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CATALINA HUANCA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TERMOSELVA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMERCIALIZADORA SALEM",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PANASONIC PERUANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "REPRESENTACIONES MARTIN",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "JOHNSON & JOHNSON DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA INTERNACIONAL DEL CAFÉ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CERAMICA SAN LORENZO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SONY PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SANDVIK",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRADING FASHION LINE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "VULCO PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BOTICA TORRES DE LIMATAMBO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO SANTANDER PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DIMEXA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECNOLOGIA DE MATERIALES DE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "RACIONALIZACION EMPRESARIAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CHUBB PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD NACIONAL DE SAN ANTONIO ABAD DEL CUSCO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PROFUTURO AFP",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELEKTRA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EL ROCIO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AGROINDUSTRIAL LAREDO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NATURA COSMETICOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ABBOTT LABORATORIOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PANDERO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION VEGA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PERUANA ETERNIT S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AGROKASA HOLDINGS S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COGORNO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LABORATORIOS AC FARMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CELISTICS PERU SAC",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BOTICAS Y SALUD",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "IPESA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPAÑIA NACIONAL DE CHOCOLATES DE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRACTO CAMIONES USA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NEXO LUBRICANTES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BNP PARIBAS CARDIF",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CREDICORP CAPITAL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TRANSPORTES CRUZ DEL SUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD NACIONAL DE INGENIERIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MICHELL Y CIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CROSLAND AUTOMOTRIZ",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "T-GESTIONA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DEVANLAY PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMERCIALIZADORA CANAN",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMERCIO & CIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AVINKA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "A. BERIO Y CIA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ALMACENES SANTA CLARA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRUPO INMOBILIARIA GRAÑA Y MONTERO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FULLCARGA SERVICIOS TRANSACCIONALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SUDAMERICANA DE FIBRAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AGROLMOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "A W FABER CASTELL PERUANA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOTORES DIESEL ANDINOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD DEL PACIFICO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SCHNEIDER",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO DE COMERCIO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PARAMONGA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "BANCO AZTECA DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SISTEMAS ORACLE DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONCRETOS SUPERMIX",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DISTRIBUIDORA PACI",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LATAM CARGO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "I S M PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE AHORRO Y CREDITO DE ICA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA MUNICIPAL DE ICA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CIA.INDUSTRIAL NUEVO MUNDO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ANITA FOOD",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NICOLL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "OMNILIFE PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SERVICIOS, COBRANZAS E INVERSIONES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MALL AVENTURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CELEPSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CITIBANK DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DISPERCOL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAL & CEMENTO SUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOLTRAK",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ZILICOM INVESTMENTS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTRO PUNO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "LLAMA GAS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "IMPALA TERMINALS PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COLEGIOS PERUANOS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ENEL GENERACION PIURA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AURIMETAL",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FORD MOTOR COMPANY",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COOLBOX",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CREDITEX",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PESQUERA CENTINELA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INTELIGO SOCIEDAD AGENTE DE BOLSA S.A. ·",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HERBALIFE PERU S.R.L",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EOM GRUPO S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD RICARDO PALMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ADMINISTRADORA JOCKEY PLAZA SHOPPING CENTER SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPORACION MIYASATO S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SOLDEX SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SAN JACINTO S.A.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INCOT S.A.C. CONTRATISTAS GENERALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA DE SEGURIDAD, VIGILANCIA Y CONTROL S.A.C",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONCREMAX S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HAUG S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ELECTROSUR",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "NEXA RESOURCES ATACOCHA S.A.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TUBOS Y PERFILES METALICOS SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TECNICAS METALICAS INGENIEROS",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "QUAD/GRAPHICS PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "APUMAYO S.A.C",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD NACIONAL DEL ALTIPLANO PUNO",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "SERVICIOS INTEGRADOS DE LIMPIEZA SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "OPTICAL NETWORKS S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EDPYME ACCESO CREDITICIO S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TETRA PAK S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "GRIFOS ESPINOZA S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "OHIO NATIONAL SEGUROS DE VIDA S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPANIA MINERA CARAVELI S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AGROINDUSTRIAS AIB",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DE ACERO COMERCIAL E INDUSTRIAL S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMP CONCESIONARIA DE ELECT DE UCAYALI SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MERCANTIL S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MEXICHEM PERU S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "COMPUDISKETT S R L",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "OBRAINSA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TOPY TOP S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ARTESCO S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INCA TOPS S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MABE PERU SA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA COLQUISIRI S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "FINANCIERA CREDINKA S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HV CONTRATISTAS S.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HERCO COMBUSTIBLES S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CENTRO COMERCIAL PLAZA NORTE S.A.C",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MOTORED SOCIEDAD ANONIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMP DE GENERACION ELECTRICA AREQUIPA S A ·",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD CIENTIFICA DEL SUR S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ACUMULADORES ETNA S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CORPAC S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD PERUANA UNION",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "DISTRIBUIDORA BAJOPONTINA S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PMP HOLDING S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD PRIVADA SAN JUAN BAUTISTA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PFIZER S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "PHILIPS PERUANA S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "ARUNTANI S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "AMERICAN AIRLINES INC. SUCURSAL DEL PERU",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONFECCIONES TEXTIMAX S A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "HILANDERIA DE ALGODON PERUANO S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA DE TRANSPORTES LAS FLORES S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONDOR TRAVEL S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "TEXTIL DEL VALLE SOCIEDAD ANONIMA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "INVERSIONES EDUCA S.A.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "EMPRESA ADMINISTRADORA CERRO S.A.C.",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD CATOLICA LOS ANGELES DE CHIMBOTE",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "UNIVERSIDAD NACIONAL AGRARIA LA MOLINA",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CAJA RURAL DE AHORRO Y CRÉDITO RAÍZ S.A.A",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "CONSORCIO TERMINALES",
+      "top_500": "Sí"
+    },
+    {
+      "empresa": "MINERA IRL S.A.",
+      "top_500": "Sí"
+    }
+  ]
+}

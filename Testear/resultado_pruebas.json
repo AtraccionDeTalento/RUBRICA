@@ -1,0 +1,41 @@
+{
+  "fecha": "2026-02-23T02:23:38.127894",
+  "total_pruebas": 6,
+  "pruebas_ok": 6,
+  "estado": "VALIDADO",
+  "perfiles_probados": {
+    "perfil_a": {
+      "nombre": "Luis Augusto Maya Velarde",
+      "puntajes": {
+        "C1": 15,
+        "C2": 5,
+        "C3": 15,
+        "C4": 15,
+        "C5": 30
+      },
+      "total": 80,
+      "clasificacion": "NO_CALIFICA",
+      "validacion": "OK"
+    },
+    "perfil_b": {
+      "nombre": "Joshua Gabriel Lopez Pinto",
+      "puntajes": {
+        "C1": 0,
+        "C2": 5,
+        "C3": 10,
+        "C4": 10,
+        "C5": 0
+      },
+      "total": 25,
+      "clasificacion": "NO_ELEGIBLE_PERFIL_DOCENTE",
+      "validacion": "OK"
+    }
+  },
+  "reglas_verificadas": [
+    "C1=0 AND C5=0 → NO_ELEGIBLE",
+    "TOTAL < 90 → NO_CALIFICA",
+    "90 <= TOTAL < 110 → PRACTITIONER",
+    "110 <= TOTAL < 150 → DTC/DTP/INVESTIGADOR",
+    "TOTAL >= 150 → CON_HORAS_INVESTIGACION"
+  ]
+}

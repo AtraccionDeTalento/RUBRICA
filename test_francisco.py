@@ -1,0 +1,48 @@
+import sys, io, json
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.path.insert(0, 'bot_evaluacion_docente')
+from extractor_cvs import ExtractorCV
+from motor_evaluacion import MotorEvaluacion
+
+cv_path = r'C:\Users\jlopezp\OneDrive - Universidad San Ignacio de Loyola (1)\Desktop\OKA\CFO_Francisco_Munoz_Lexcequia.pdf'
+e = ExtractorCV(cv_path)
+datos = e.analizar_cv()
+print('=== DATOS EXTRAIDOS ===')
+print('Nombre:', datos['nombre'])
+print('Educacion:', json.dumps(datos['educacion'], ensure_ascii=False))
+print('Anos exp:', datos['anos_experiencia'])
+print('Publicaciones:', datos['publicaciones'])
+print('Experiencia laboral (count):', len(datos.get('experiencia_laboral', [])))
+
+motor = MotorEvaluacion()
+resultado = motor.evaluar_cv_completo(datos)
+print()
+print('=== EVALUACION ===')
+print('C1:', resultado['puntajes']['C1'], 'pts -', resultado['detalles']['formacion_academica']['justificacion'])
+print('C1 categoria:', resultado['detalles']['formacion_academica']['categoria'])
+print('C1 evidencia:', resultado['detalles']['formacion_academica']['evidencia'])
+print()
+print('C2:', resultado['puntajes']['C2'], 'pts -', resultado['detalles']['experiencia_docente']['justificacion'])
+print()
+print('C3:', resultado['puntajes']['C3'], 'pts -', resultado['detalles']['experiencia_profesional']['justificacion'])
+print('C3 categoria:', resultado['detalles']['experiencia_profesional']['categoria'])
+print()
+print('C4:', resultado['puntajes']['C4'], 'pts -', resultado['detalles']['centro_labores']['justificacion'])
+print('C4 categoria:', resultado['detalles']['centro_labores']['categoria'])
+print()
+print('C5:', resultado['puntajes']['C5'], 'pts -', resultado['detalles']['produccion_academica']['justificacion'])
+print()
+print('TOTAL:', resultado['total'], 'pts')
+print('Clasificacion:', resultado['clasificacion'])
+print('Es elegible:', resultado['es_elegible'])
+print('Perfiles aprobados:', resultado.get('perfiles_aprobados', []))
+
+# Expected breakdown:
+print()
+print('=== ESPERADO ===')
+print('C1: 50 pts (Doctorado completo - DBA)')
+print('C2: 5 pts (0 anos docencia)')
+print('C3: 40 pts (Alta Direccion / CFO)')
+print('C4: 15 pts (Empresa mediana)')
+print('C5: 0 pts (Sin produccion)')
+print('TOTAL: 110 pts')

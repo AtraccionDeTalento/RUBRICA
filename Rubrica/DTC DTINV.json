@@ -1,0 +1,197 @@
+{
+  "version": "1.0",
+  "nombre": "SeleccionDocente",
+  "formula_puntaje_total": "C1 + C2 + C3 + C4 + C5",
+
+  "criterios": {
+    "C1": {
+      "nombre": "FormacionAcademica",
+      "max_puntaje": 50,
+      "niveles": [
+        {
+          "codigo": "DOCTORADO_COMPLETO",
+          "descripcion": "Grado de doctor alineado al curso/asignatura",
+          "puntaje": 50
+        },
+        {
+          "codigo": "DOCTORADO_EN_CURSO",
+          "descripcion": "Candidato a doctor",
+          "puntaje": 40
+        },
+        {
+          "codigo": "MAESTRIA_COMPLETA",
+          "descripcion": "Requisito minimo DTC y Practitioner",
+          "puntaje": 30
+        },
+        {
+          "codigo": "BACHILLER_LICENCIATURA",
+          "descripcion": "Valido para DTP en cursos especificos",
+          "puntaje": 15
+        },
+        {
+          "codigo": "NO_CUMPLE",
+          "descripcion": "No posee grado afin (menos de 18 creditos)",
+          "puntaje": 0
+        }
+      ]
+    },
+
+    "C2": {
+      "nombre": "ExperienciaDocenteUniversitaria",
+      "max_puntaje": 40,
+      "niveles": [
+        {
+          "codigo": "MAS_DE_5_ANOS",
+          "descripcion": "Docencia universitaria sostenida",
+          "puntaje": 40
+        },
+        {
+          "codigo": "DE_3_A_4_ANOS",
+          "descripcion": "Experiencia universitaria",
+          "puntaje": 30
+        },
+        {
+          "codigo": "DE_1_A_2_ANOS",
+          "descripcion": "Nivel inicial",
+          "puntaje": 20
+        },
+        {
+          "codigo": "CERO_ANOS",
+          "descripcion": "Sin experiencia",
+          "puntaje": 5
+        }
+      ]
+    },
+
+    "C3": {
+      "nombre": "ExperienciaProfesional",
+      "max_puntaje": 40,
+      "niveles": [
+        {
+          "codigo": "ALTA_DIRECCION_GERENCIA",
+          "descripcion": "CEO, Director, Gerente, Director de Programa",
+          "puntaje": 40
+        },
+        {
+          "codigo": "MANDO_MEDIO",
+          "descripcion": "Jefaturas, supervisores, coordinadores",
+          "puntaje": 30
+        },
+        {
+          "codigo": "PROFESIONAL_SENIOR",
+          "descripcion": "7-15+ años o expertise reconocido",
+          "puntaje": 25
+        },
+        {
+          "codigo": "INTERMEDIO_JUNIOR",
+          "descripcion": "2-7 años en el area",
+          "puntaje": 15
+        },
+        {
+          "codigo": "ANALISTA_OPERATIVO",
+          "descripcion": "Roles tecnicos operativos",
+          "puntaje": 10
+        },
+        {
+          "codigo": "SIN_EXPERIENCIA_RELEVANTE",
+          "descripcion": "Sin experiencia relevante",
+          "puntaje": 0
+        }
+      ]
+    },
+
+    "C4": {
+      "nombre": "CentroDeLabores",
+      "max_puntaje": 20,
+      "niveles": [
+        {
+          "codigo": "EMPRESA_TOP",
+          "descripcion": "Top 500 Peru o corporacion reconocida",
+          "puntaje": 20
+        },
+        {
+          "codigo": "EMPRESA_MEDIANA_RECONOCIDA",
+          "descripcion": "Nivel profesional adecuado",
+          "puntaje": 15
+        },
+        {
+          "codigo": "EMPRESA_PEQUENA",
+          "descripcion": "Relevancia limitada",
+          "puntaje": 10
+        },
+        {
+          "codigo": "SIN_EVIDENCIA",
+          "descripcion": "Emprendimiento o sin empleo actual sin evidencia",
+          "puntaje": 0
+        }
+      ]
+    },
+
+    "C5": {
+      "nombre": "ProduccionAcademicaInvestigacion",
+      "max_puntaje": 50,
+      "niveles": [
+        {
+          "codigo": "PUBLICACIONES_SCOPUS_WOS",
+          "descripcion": "Autor o coautor",
+          "puntaje": 50
+        },
+        {
+          "codigo": "LIBRO_O_REVISTA_INDEXADA",
+          "descripcion": "Evidencia academica formal",
+          "puntaje": 40
+        },
+        {
+          "codigo": "INVESTIGACION",
+          "descripcion": "Investigacion o innovacion basica",
+          "puntaje": 30
+        },
+        {
+          "codigo": "PRODUCCION_INICIAL",
+          "descripcion": "Documento tecnico o informe",
+          "puntaje": 10
+        },
+        {
+          "codigo": "SIN_EVIDENCIA",
+          "descripcion": "No registra",
+          "puntaje": 0
+        }
+      ]
+    }
+  },
+
+  "perfiles": [
+    {
+      "codigo": "DTC",
+      "puntaje_minimo": 110,
+      "condicion_adicional": "Prioriza formacion, docencia e investigacion"
+    },
+    {
+      "codigo": "DTP",
+      "puntaje_minimo": 110,
+      "condicion_adicional": "Equilibrio docencia-profesion"
+    },
+    {
+      "codigo": "PRACTITIONER",
+      "puntaje_minimo": 80,
+      "condicion_adicional": "Prioriza experiencia profesional"
+    },
+    {
+      "codigo": "DOCENTE_INVESTIGADOR",
+      "puntaje_minimo": 110,
+      "condicion_adicional": "Requiere produccion alta (Scopus, WoS o similar)"
+    },
+    {
+      "codigo": "CON_HORAS_DE_INVESTIGACION",
+      "puntaje_minimo": 150,
+      "condicion_adicional": "Requiere produccion distinta de Sin evidencia"
+    }
+  ],
+
+  "reglas_validacion": {
+    "puntaje_total_minimo": 0,
+    "puntaje_total_maximo": 200,
+    "clasificacion_por_puntaje": true,
+    "clasificacion_por_condiciones": true
+  }
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Analytics - Talento & Cultura USIL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=3.0.2">
+    <!-- Chart.js para gráficos interactivos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            const errorMsg = `ERROR CRÍTICO EN LA INTERFAZ:\n${message}\n\nArchivo: ${source}\nLínea: ${lineno}:${colno}\n\nStack:\n${error ? error.stack : 'No disponible'}`;
+            alert(errorMsg);
+            console.error(errorMsg);
+            return false;
+        };
+        window.onunhandledrejection = function(event) {
+            const errorMsg = `ERROR DE PROMESA NO MANEJADA:\n${event.reason}`;
+            alert(errorMsg);
+            console.error(errorMsg);
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 People Analytics - Evaluación Docente</h1>
+            <p class="subtitle">Talento & Cultura | Universidad San Ignacio de Loyola</p>
+        </header>
+
+        <!-- Pantalla de inicio -->
+        <div id="inicio-screen" class="screen active">
+            <div class="card">
+                <div class="intro-compact">
+                    <h2>Evaluación de perfiles docentes</h2>
+                    <p class="intro-note">Carga tu Excel y los CVs PDF. Los perfiles experimentales no se reconstruyen automáticamente: se activan solo desde los botones <strong>Legajos</strong> o <strong>Web</strong> por candidato.</p>
+
+                    <details class="guia-detalles">
+                        <summary>Ver guía rápida (opcional)</summary>
+                        <ol>
+                            <li>Extrae datos de CVs y enlaces CTI.</li>
+                            <li>Evalúa con la rúbrica oficial de Talento.</li>
+                            <li>Calcula puntajes y ranking.</li>
+                            <li>Permite reconstrucción manual por botón.</li>
+                            <li>Genera reportes para revisión.</li>
+                        </ol>
+                    </details>
+                </div>
+
+                <!-- Selector de modo de entrada -->
+                <div class="modo-tabs" id="modo-tabs">
+                    <button class="modo-tab active" id="tab-archivos" onclick="seleccionarModo('archivos')">
+                        📁 Excel / CVs PDFs
+                    </button>
+                    <button class="modo-tab" id="tab-nombres" onclick="seleccionarModo('nombres')">
+                        📋 Pegar Nombres (Búsqueda Masiva)
+                    </button>
+                    <button class="modo-tab" id="tab-links" onclick="seleccionarModo('links')">
+                        🔗 Links CTI Vitae
+                    </button>
+                </div>
+
+                <!-- PANEL ARCHIVOS (Excel + PDFs) -->
+                <div id="panel-archivos">
+                <div class="carga-grid">
+                    <!-- Información sobre fuentes de datos -->
+                    <div class="info-section">
+                        <h3>📊 Cargar Archivo de Análisis</h3>
+                        <div class="upload-box">
+                            <div class="upload-area" id="upload-area">
+                                <input type="file" id="archivo-excel" accept=".xlsx,.xls" multiple style="display: none;">
+                                <div class="upload-icon">📁</div>
+                                <p class="upload-text">Arrastra uno o varios Excel</p>
+                                <button type="button" class="btn btn-outline" id="btn-seleccionar-archivo">
+                                    📂 Seleccionar Excel
+                                </button>
+                                <p class="upload-hint">Formatos: .xlsx, .xls (se procesa el principal)</p>
+                            </div>
+                            <div class="archivo-seleccionado" id="archivo-seleccionado" style="display: none;">
+                                <span class="archivo-icono">📄</span>
+                                <span class="archivo-nombre" id="nombre-archivo"></span>
+                                <button type="button" class="btn-quitar" id="btn-quitar-archivo">✕</button>
+                            </div>
+                            <div class="archivo-info" id="archivo-info" style="display: none;">
+                                <p id="archivo-stats"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selección de archivos PDF de CVs -->
+                    <div class="info-section">
+                        <h3>📁 Archivos de CVs (PDFs)</h3>
+                        <div class="upload-box">
+                            <div class="upload-area" id="upload-area-pdfs">
+                                <input type="file" id="archivos-pdfs" accept=".pdf" multiple style="display: none;">
+                                <div class="upload-icon">📄</div>
+                                <p class="upload-text">Arrastra o selecciona múltiples PDFs</p>
+                                <button type="button" class="btn btn-outline" id="btn-seleccionar-carpeta">
+                                    📂 Seleccionar PDFs
+                                </button>
+                                <p class="upload-hint">Soporta carga múltiple para evaluación</p>
+                            </div>
+                            <div class="archivo-seleccionado" id="carpeta-seleccionada" style="display: none;">
+                                <span class="archivo-icono">📂</span>
+                                <span class="archivo-nombre" id="nombre-carpeta"></span>
+                                <button type="button" class="btn-quitar" id="btn-quitar-carpeta">✕</button>
+                            </div>
+                            <div class="archivo-info" id="carpeta-info" style="display: none;">
+                                <p id="carpeta-stats"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div><!-- /panel-archivos -->
+
+                <!-- PANEL NOMBRES (Búsqueda masiva por nombre) -->
+                <div id="panel-nombres" style="display:none">
+                    <div class="nombres-input-box">
+                        <h3>📋 Búsqueda Masiva por Nombres</h3>
+                        <p class="nombres-hint">Pega los nombres de los candidatos (uno por línea). El sistema buscará y evaluará cada perfil automáticamente en la web.</p>
+                        <textarea
+                            id="textarea-nombres"
+                            class="nombres-textarea"
+                            rows="8"
+                            placeholder="Juan Pérez García&#10;María López Torres&#10;Carlos Ramírez Mendoza&#10;..."
+                            oninput="parsearNombres()"
+                        ></textarea>
+                        <div class="nombres-footer">
+                            <span class="nombres-count" id="nombres-count">0 nombres detectados</span>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="limpiarNombres()">✕ Limpiar</button>
+                        </div>
+                        <div id="nombres-preview" class="nombres-preview" style="display:none"></div>
+                    </div>
+                </div><!-- /panel-nombres -->
+
+                <!-- PANEL LINKS (Links de CTI Vitae agregados manualmente) -->
+                <div id="panel-links" style="display:none">
+                    <div class="nombres-input-box">
+                        <h3>🔗 Agregar Links de CTI Vitae</h3>
+                        <p class="nombres-hint">Pega el enlace de CTI Vitae de cada candidato y presiona "Agregar" (o Enter). No necesitas subir un Excel: los links se evalúan igual que los demás CVs.</p>
+                        <div class="links-input-row">
+                            <input
+                                type="url"
+                                id="input-link-cti"
+                                class="links-input"
+                                placeholder="https://ctivitae.concytec.gob.pe/..."
+                                onkeydown="if(event.key==='Enter'){event.preventDefault();agregarLinkManual();}"
+                            >
+                            <button type="button" class="btn btn-primary" onclick="agregarLinkManual()">➕ Agregar</button>
+                        </div>
+                        <div class="nombres-footer">
+                            <span class="nombres-count" id="links-count">0 links agregados</span>
+                            <button type="button" class="btn btn-outline btn-sm" onclick="limpiarLinksManuales()">✕ Limpiar</button>
+                        </div>
+                        <div id="links-preview" class="nombres-preview" style="display:none"></div>
+                    </div>
+                </div><!-- /panel-links -->
+
+                <div class="actions-container" style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+                    <button id="btn-lanzar-analisis" type="button" class="btn btn-primary">
+                        🚀 Iniciar Análisis de Talento
+                    </button>
+                    <button id="btn-reiniciar" class="btn btn-outline" style="display: none;" onclick="forzarReinicio()">
+                        🔄 Reiniciar Sistema
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de procesamiento -->
+        <div id="procesando-screen" class="screen">
+            <div class="card">
+                <h2>⚙️ Analizando Perfiles con IA</h2>
+                
+                <div class="loader-container">
+                    <div class="loader"></div>
+                </div>
+                
+                <div class="estado-actual">
+                    <p id="mensaje-estado">Iniciando...</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p class="progress-text"><span id="porcentaje">0</span>%</p>
+                <button id="btn-reiniciar-procesando" class="btn btn-outline" style="display: none; margin-top: 20px; width: 100%; background-color: #fff0f0; border-color: #ffcaca; color: #d32f2f;" onclick="forzarReinicio()">
+                    🔄 Reiniciar Sistema (Atascado)
+                </button>
+                
+                <!-- NUEVO: Estadísticas en tiempo real -->
+                <div class="stats-realtime" id="stats-realtime" style="display: none;">
+                    <div class="stat-item">
+                        <span class="stat-label">⏱️ Tiempo restante:</span>
+                        <span class="stat-value" id="tiempo-restante">Calculando...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">📊 CVs procesados:</span>
+                        <span class="stat-value" id="cvs-procesados">0 / 0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">✅ Exitosos:</span>
+                        <span class="stat-value success" id="cvs-exitosos">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">❌ Con errores:</span>
+                        <span class="stat-value error" id="cvs-errores">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">⚡ Velocidad:</span>
+                        <span class="stat-value" id="velocidad-cvs">0 CVs/seg</span>
+                    </div>
+                </div>
+                
+                <!-- PANEL DE REGISTROS CON ERROR - Botón de enfoque individual -->
+                <div class="panel-errores-individual" id="panel-errores-individual" style="display: none;">
+                    <div class="panel-errores-header">
+                        <h4>⚠️ Registros con Problemas</h4>
+                        <span class="contador-errores" id="contador-errores-panel">0</span>
+                    </div>
+                    <p class="panel-errores-descripcion">
+                        Los siguientes registros tuvieron problemas. Puedes <strong>enfocar</strong> cada uno para analizarlo individualmente.
+                    </p>
+                    <div class="lista-registros-error" id="lista-registros-error">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+                
+                <div class="pasos-completados">
+                    <div class="paso-item" id="paso-1">
+                        <span class="icono">⏳</span> Extracción de CVs
+                    </div>
+                    <div class="paso-item" id="paso-2">
+                        <span class="icono">⏳</span> Análisis de Rúbrica
+                    </div>
+                    <div class="paso-item" id="paso-3">
+                        <span class="icono">⏳</span> Evaluación de Candidatos
+                    </div>
+                    <div class="paso-item" id="paso-4">
+                        <span class="icono">⏳</span> Generación de Decisión
+                    </div>
+                    <div class="paso-item" id="paso-5">
+                        <span class="icono">⏳</span> Creación de Reportes
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de resultados -->
+        <div id="resultados-screen" class="screen">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                        <button onclick="reiniciarApp()" class="btn btn-secondary" style="padding:10px 18px;font-size:0.95em;font-weight:600;">
+                            ← Nueva Evaluación
+                        </button>
+                        <h2 style="margin: 0;">✅ Clasificación Completada</h2>
+                    </div>
+                    <button id="btn-descargar-excel-detallado" class="btn btn-success" style="padding: 12px 25px; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 10px rgba(40,167,69,0.3);">
+                        📊 Descargar Excel Detallado
+                    </button>
+                </div>
+                
+                <!-- Resumen por perfil -->
+                <div class="resumen-perfiles" id="resumen-perfiles">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+                
+                <!-- RESUMEN DE PROBLEMAS - Links faltantes por facultad -->
+                <div class="resumen-problemas-section" id="resumen-problemas-container" style="display: none;">
+                    <!-- Se llenará dinámicamente con los datos de facultades con links faltantes -->
+                </div>
+                
+                <!-- SECCIÓN NUEVA: Panel de Comunicación a Facultades -->
+                <div class="panel-comunicacion-section" id="panel-comunicacion-container" style="display: none;">
+                    <div class="panel-comunicacion-header">
+                        <h3>📧 PANEL DE COMUNICACIÓN A FACULTADES</h3>
+                        <p class="panel-descripcion">Las siguientes facultades y carreras tienen candidatos con información de CTI Vitae pendiente</p>
+                    </div>
+                    
+                    <!-- Resumen general -->
+                    <div class="resumen-general-pendientes" id="resumen-general-pendientes">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                    
+                    <!-- Tarjetas de Facultades -->
+                    <div class="facultades-comunicar-grid" id="facultades-comunicar-grid">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                    
+                    <!-- Detalle por Carrera -->
+                    <div class="carreras-detalle-section" id="carreras-detalle-section">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                    
+                    <!-- Lista de personas a contactar -->
+                    <div class="lista-contactar-section" id="lista-contactar-section" style="display: none;">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+                
+                <!-- Tabla consolidada de ranking -->
+                <div class="tabla-clasificacion-section">
+                    <h3>📊 Ranking Completo de Candidatos</h3>
+                    
+                    <!-- Buscador de candidatos -->
+                    <div class="buscador-container">
+                        <div class="buscador-input-wrapper">
+                            <span class="buscador-icon">🔍</span>
+                            <input type="text" id="buscador-ranking" class="buscador-input" 
+                                   placeholder="Buscar por nombre, DNI, facultad, carrera o perfil...">
+                            <button type="button" id="btn-limpiar-busqueda" class="btn-limpiar-busqueda" style="display: none;">✕</button>
+                        </div>
+                        <div class="buscador-stats" id="buscador-stats"></div>
+                    </div>
+                    
+                    <!-- NUEVOS FILTROS AVANZADOS -->
+                    <div class="filtros-tabla" id="filtros-avanzados" style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                        <select id="filtro-facultad" class="filtro-select">
+                            <option value="">Todas las Facultades</option>
+                        </select>
+                        <select id="filtro-tipo-candidato" class="filtro-select">
+                            <option value="">Todos los Tipos de Candidato</option>
+                        </select>
+                        <select id="filtro-puesto" class="filtro-select">
+                            <option value="">Todos los Puestos</option>
+                        </select>
+                        <select id="filtro-cat-practitioner" class="filtro-select">
+                            <option value="">Todas las Cat. Practitioner</option>
+                        </select>
+                        <select id="filtro-perfil" class="filtro-select" title="Perfil asignado por la rúbrica">
+                            <option value="">Todos los Perfiles</option>
+                        </select>
+                        <select id="filtro-elegibilidad" class="filtro-select" title="Filtrar por elegibilidad">
+                            <option value="">Elegibles y No Elegibles</option>
+                            <option value="1">✅ Solo Elegibles</option>
+                            <option value="0">❌ Solo No Elegibles</option>
+                        </select>
+                        <select id="filtro-puntaje-min" class="filtro-select" title="Puntaje mínimo del candidato">
+                            <option value="">Cualquier Puntaje</option>
+                            <option value="50">Puntaje ≥ 50%</option>
+                            <option value="60">Puntaje ≥ 60%</option>
+                            <option value="70">Puntaje ≥ 70%</option>
+                            <option value="80">Puntaje ≥ 80%</option>
+                            <option value="90">Puntaje ≥ 90%</option>
+                        </select>
+                        <select id="filtro-docencia-min" class="filtro-select" title="Años de experiencia docente detectados (C2)">
+                            <option value="">Cualquier Exp. Docente</option>
+                            <option value="1">Docencia ≥ 1 año</option>
+                            <option value="3">Docencia ≥ 3 años</option>
+                            <option value="5">Docencia ≥ 5 años</option>
+                        </select>
+                        <button type="button" id="btn-limpiar-filtros" class="filtro-select" style="cursor:pointer" title="Quitar todos los filtros">🧹 Limpiar filtros</button>
+                    </div>
+                    
+                    <div class="tabla-scroll">
+                        <table class="tabla-clasificacion">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Candidato</th>
+                                    <th>Tipo Perfil</th>
+                                    <th>Perfil Asignado</th>
+                                    <th>Puntaje Total</th>
+                                    <th>Justificación</th>
+                                    <th>C1<br><small>(Formación)</small></th>
+                                    <th>C2<br><small>(Exp. Docente)</small></th>
+                                    <th>C3<br><small>(Exp. Prof.)</small></th>
+                                    <th>C4<br><small>(Centro Lab.)</small></th>
+                                    <th>C5<br><small>(Producción)</small></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-clasificacion-tbody">
+                                <!-- Se llenará dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Detalles expandidos de cada candidato -->
+                <div class="detalles-candidatos" id="detalles-candidatos">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+                
+                <!-- Se eliminó la sección de descargas del final para moverla arriba -->
+                <button id="btn-nueva-evaluacion" class="btn btn-primary">
+                    🔄 Nueva Evaluación
+                </button>
+            </div>
+        </div>
+
+        <!-- Pantalla de error -->
+        <div id="error-screen" class="screen">
+            <div class="card error-card">
+                <h2>❌ Error en la Evaluación</h2>
+                <p id="mensaje-error" class="error-mensaje"></p>
+                <div style="display:flex; gap:10px; justify-content:center;">
+                    <button id="btn-reintentar" class="btn btn-primary">
+                        🔄 Reintentar
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="reiniciarApp()">
+                        ← Volver al inicio
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="reiniciando-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; color: white;">
+            <div style="font-size: 50px; animation: spin 2s linear infinite;">⚙️</div>
+            <h2 style="margin-top: 20px; font-family: 'Inter', sans-serif;">Reiniciando Aplicación...</h2>
+            <p style="color: #cbd5e1; margin-top: 10px;">Restableciendo el servidor y limpiando memoria</p>
+        </div>
+        
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}?v=3.0.2"></script>
+</body>
+</html>

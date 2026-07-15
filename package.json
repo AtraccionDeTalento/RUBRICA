@@ -1,0 +1,69 @@
+{
+  "name": "evaluacion-docente-usil",
+  "version": "3.0.0",
+  "description": "Sistema de Evaluación de Talento Docente USIL",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "set CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --win --dir"
+  },
+  "author": "People Analytics USIL",
+  "license": "ISC",
+  "dependencies": {
+    "electron-is-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "pe.edu.usil.evaluaciondocente",
+    "productName": "Evaluacion Docente USIL",
+    "directories": {
+      "output": "dist_electron"
+    },
+    "win": {
+      "icon": "icon.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "servidor.py",
+      "package.json",
+      "icon.png",
+      "icon.ico"
+    ],
+    "extraFiles": [
+      {
+        "from": ".",
+        "to": ".",
+        "filter": [
+          "**/*",
+          "!node_modules/**",
+          "!.git/**",
+          "!dist_electron/**",
+          "!.venv/**",
+          "!.venv2/**",
+          "!.claude/**",
+          "!__pycache__/**",
+          "!**/__pycache__/**",
+          "!*.pyc",
+          "!*.log",
+          "!*.log.err",
+          "!package-lock.json",
+          "!.gitignore",
+          "!dist/**",
+          "!build/**",
+          "!test_*.py"
+        ]
+      }
+    ]
+  }
+}
