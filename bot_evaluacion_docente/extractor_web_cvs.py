@@ -61,17 +61,29 @@ class ExtractorWebCVs:
     TIMEOUT_REANALISIS = 180  # 3 minutos
     
     def __init__(self):
-        self.session = requests.Session()
-        # Headers más completos para simular un navegador real
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'es-PE,es;q=0.9,en;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-            'Cache-Control': 'max-age=0'
-        })
+        # CTI Vitae es una app JSP/Struts con sesión de servidor por JSESSIONID.
+        # Si varios hilos comparten un mismo requests.Session (y por tanto la misma
+        # cookie de sesión), el servidor serializa/confunde esas peticiones
+        # concurrentes y algunas terminan en timeout aunque el perfil exista y sea
+        # válido. Por eso cada hilo obtiene su propia Session vía threading.local.
+        self._local = threading.local()
+
+    def _get_session(self) -> requests.Session:
+        session = getattr(self._local, 'session', None)
+        if session is None:
+            session = requests.Session()
+            # Headers más completos para simular un navegador real
+            session.headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'es-PE,es;q=0.9,en;q=0.8',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+                'Cache-Control': 'max-age=0'
+            })
+            self._local.session = session
+        return session
     
     def _hacer_peticion_con_reintentos(self, url: str) -> requests.Response:
         """
@@ -92,7 +104,7 @@ class ExtractorWebCVs:
             try:
                 timeout = self.TIMEOUT_INICIAL + (intento - 1) * self.TIMEOUT_INCREMENTO
                 print(f"   📡 Intento {intento}/{self.MAX_REINTENTOS} (timeout={timeout}s)...")
-                response = self.session.get(url, timeout=timeout)
+                response = self._get_session().get(url, timeout=timeout)
                 response.raise_for_status()
                 return response
                 
@@ -147,7 +159,7 @@ class ExtractorWebCVs:
             try:
                 print(f"   🔄 Re-análisis intento {intento} (timeout={int(timeout)}s, restante={int(tiempo_restante)}s)...")
                 
-                response = self.session.get(url, timeout=timeout)
+                response = self._get_session().get(url, timeout=timeout)
                 response.raise_for_status()
                 print(f"   ✅ Conexión exitosa en intento {intento} ({int(time.time() - tiempo_inicio)}s total)")
                 return response
@@ -273,7 +285,19 @@ class ExtractorWebCVs:
                 nombre = titulo.get_text(strip=True)
                 if nombre and len(nombre) > 2:
                     return nombre
-            
+
+            # Método 1bis: Plantilla alterna de CTI Vitae (sin sección "Datos
+            # Personales" ni h1.tituloNombre) que muestra el nombre en
+            # <div class="tituloNombreFicha2"><span>APELLIDOS NOMBRES</span></div>.
+            # Sin este método, estas fichas devolvían "Nombre no encontrado"
+            # aunque el perfil sí existe y tiene datos completos.
+            div_nombre = soup.find('div', class_='tituloNombreFicha2')
+            if div_nombre:
+                nombre = div_nombre.get_text(separator=' ', strip=True)
+                nombre = ' '.join(nombre.split())  # normaliza \xa0/espacios múltiples
+                if nombre and len(nombre) > 2:
+                    return nombre
+
             # Método 2: Buscar en tabla de datos personales
             tabla_personal = soup.find('table', {'class': 'tablaPersonal'})
             if tabla_personal:
@@ -595,10 +619,22 @@ class ExtractorWebCVs:
         """
         Extrae nivel máximo de educación desde tablas estructuradas de CTI Vitae
         REGLA CRÍTICA: Solo cuenta grados OBTENIDOS y verificables
-        
-        Busca en AMBAS secciones:
-        - FORMACIÓN ACADÉMICA (FUENTE: SUNEDU) - Grados verificados oficialmente
-        - FORMACIÓN ACADÉMICA (FUENTE: MANUAL) - Grados autodeclarados (usados para grados extranjeros)
+
+        CTI Vitae separa la educación en tablas por SECCIÓN (encabezado <h1>),
+        no por texto dentro de cada fila:
+        - "Formación Académica (Fuente: SUNEDU)"  -> grados COMPLETADOS, columnas
+          [Grado, Título, Centro de Estudios, País, Fuente]
+        - "Formación Académica (Fuente: Manual)"  -> grados COMPLETADOS
+          autodeclarados (grados extranjeros), mismas columnas + fechas
+        - "Estudios académicos y/o técnicos superiores en curso" -> grados NO
+          completados, columnas DISTINTAS [Centro de estudios, Carrera, Tipo de
+          estudios, Fecha de inicio] — la palabra "en curso" NUNCA aparece
+          dentro de la fila, solo en el título de la sección.
+        Identificar la tabla correcta por su encabezado (como aquí) es la única
+        forma confiable de no confundir ambas secciones; antes se intentaba
+        detectar "en curso" por texto dentro de cada fila / celda, lo cual
+        fallaba siempre para esa tabla (columnas distintas, sin esa palabra) y
+        terminaba clasificando doctorados/maestrías en curso como completos.
         """
         educacion = {
             'doctorado': False,
@@ -607,118 +643,89 @@ class ExtractorWebCVs:
             'maestria_completa': False,
             'licenciatura': False
         }
-        
+
         try:
             grados_obtenidos = []
             grados_en_curso = []
-            fuentes_encontradas = []
-            
-            # ============================================================
-            # MÉTODO 1: Buscar en todas las tablas de la página
-            # Esto incluye tanto SUNEDU como MANUAL
-            # ============================================================
-            all_tables = soup.find_all('table')
-            print(f"   📊 Analizando {len(all_tables)} tablas para educación...")
-            
-            for tabla in all_tables:
-                filas = tabla.find_all('tr')
-                
-                for fila in filas:
-                    celdas = fila.find_all('td')
-                    if len(celdas) >= 2:
+            titulos_texto = []  # Títulos/carreras reales (ej. "Ingeniero de Sistemas"),
+            # para que otros módulos (ej. clasificador de dominio) puedan usar el
+            # campo real de estudios del candidato en vez de adivinar buscando
+            # palabras sueltas en todo el texto de la página.
+
+            headings = soup.find_all('h1', class_='titulo_fichas_dos')
+            print(f"   📊 Analizando {len(headings)} secciones para educación...")
+
+            def _clasificar_fila_completada(celda_grado: str, institucion: str):
+                if any(x in celda_grado for x in ('DOCTOR', 'DOCTORADO', 'PHD', 'PH.D')):
+                    educacion['doctorado'] = True
+                    educacion['doctorado_completo'] = True
+                    grados_obtenidos.append(f'DOCTORADO ({institucion[:30]}...)')
+                elif any(x in celda_grado for x in ('MAGISTER', 'MAESTR', 'MÁSTER', 'MASTER', 'MBA', 'M.SC', 'MSC')):
+                    educacion['maestria'] = True
+                    educacion['maestria_completa'] = True
+                    grados_obtenidos.append(f'MAESTRIA ({institucion[:30]}...)')
+                elif any(x in celda_grado for x in ('LICENCIADO', 'BACHILLER', 'INGENIER', 'TÍTULO', 'TITULO')):
+                    educacion['licenciatura'] = True
+                    grados_obtenidos.append('LICENCIATURA')
+
+            def _clasificar_fila_en_curso(celda_carrera: str):
+                if any(x in celda_carrera for x in ('DOCTOR', 'DOCTORADO', 'PHD', 'PH.D')):
+                    grados_en_curso.append('DOCTORADO_EN_CURSO')
+                elif any(x in celda_carrera for x in ('MAGISTER', 'MAESTR', 'MÁSTER', 'MASTER', 'MBA', 'M.SC', 'MSC')):
+                    grados_en_curso.append('MAESTRIA_EN_CURSO')
+
+            for h1 in headings:
+                titulo = h1.get_text(strip=True).upper()
+                tabla = h1.find_next('table')
+                if not tabla:
+                    continue
+                filas = tabla.find_all('tr')[1:]  # saltar encabezado de columnas
+
+                if 'FORMACIÓN ACADÉMICA' in titulo or 'FORMACION ACADEMICA' in titulo:
+                    for fila in filas:
+                        celdas = fila.find_all('td')
+                        if len(celdas) < 2 or not fila.get_text(strip=True):
+                            continue
                         celda_grado = celdas[0].get_text(strip=True).upper()
-                        celda_titulo = celdas[1].get_text(strip=True).upper() if len(celdas) > 1 else ""
-                        fila_completa = fila.get_text(strip=True).upper()
-                        
-                        # DETECTAR DOCTORADO
-                        if 'DOCTOR' in celda_grado or 'DOCTORADO' in celda_grado or 'PHD' in celda_grado or 'PH.D' in celda_grado:
-                            # Verificar que NO sea "en curso" o "candidato"
-                            if '(C)' not in celda_titulo and 'CANDIDATO' not in celda_titulo and 'EN CURSO' not in fila_completa:
-                                educacion['doctorado'] = True
-                                educacion['doctorado_completo'] = True
-                                institucion = celdas[2].get_text(strip=True) if len(celdas) > 2 else ""
-                                grados_obtenidos.append(f'DOCTORADO ({institucion[:30]}...)')
-                            else:
-                                grados_en_curso.append('DOCTORADO_EN_CURSO')
-                        
-                        # DETECTAR MAESTRÍA
-                        elif any(x in celda_grado for x in ['MAGISTER', 'MAESTR', 'MÁSTER', 'MASTER', 'MBA', 'M.SC', 'MSC']):
-                            # Verificar que NO sea "en curso" o "candidato"
-                            if '(C)' not in celda_titulo and 'CANDIDATO' not in celda_titulo and 'EN CURSO' not in fila_completa:
-                                # Verificar fecha fin si está disponible
-                                fecha_fin = celdas[-1].get_text(strip=True) if len(celdas) >= 5 else ""
-                                
-                                if fecha_fin or len(celdas) <= 5:  # Tabla de obtenidos tiene menos columnas
-                                    educacion['maestria'] = True
-                                    educacion['maestria_completa'] = True
-                                    institucion = celdas[2].get_text(strip=True) if len(celdas) > 2 else ""
-                                    grados_obtenidos.append(f'MAESTRIA ({institucion[:30]}...)')
-                            else:
-                                grados_en_curso.append('MAESTRIA_EN_CURSO')
-                        
-                        # DETECTAR LICENCIATURA/TITULO
-                        elif any(x in celda_grado for x in ['LICENCIADO', 'BACHILLER', 'INGENIER', 'TÍTULO', 'TITULO']):
-                            educacion['licenciatura'] = True
-                            grados_obtenidos.append('LICENCIATURA')
-            
-            # ============================================================
-            # MÉTODO 2 (FALLBACK): Buscar en texto completo si no se encontró nada
-            # Esto ayuda cuando el HTML tiene formato diferente
-            # ============================================================
-            if not educacion['doctorado'] and not educacion['maestria']:
-                texto_completo = soup.get_text().upper()
-                
-                # Buscar patrones de doctorado en texto
-                patrones_doctorado = [
-                    r'DOCTOR\s+(EN|DE|IN)\s+\w+',
-                    r'DOCTORADO\s+(EN|DE)\s+\w+',
-                    r'PH\.?D\.?\s+',
-                    r'GRADO\s+DE\s+DOCTOR'
-                ]
-                
-                for patron in patrones_doctorado:
-                    if re.search(patron, texto_completo):
-                        # Verificar que no sea candidato
-                        if 'CANDIDATO A DOCTOR' not in texto_completo and 'DOCTORADO (C)' not in texto_completo:
-                            educacion['doctorado'] = True
-                            educacion['doctorado_completo'] = True
-                            grados_obtenidos.append('DOCTORADO (detectado en texto)')
-                            break
-                
-                # Buscar patrones de maestría en texto
-                patrones_maestria = [
-                    r'MAGIST[EÉ]?R\s+(EN|DE|IN)\s+\w+',
-                    r'MAESTR[IÍ]A\s+(EN|DE)\s+\w+',
-                    r'MASTER\s+(EN|OF|IN|DE)\s+\w+',
-                    r'M\.?SC\.?\s+',
-                    r'MBA\s+'
-                ]
-                
-                for patron in patrones_maestria:
-                    if re.search(patron, texto_completo):
-                        # Verificar que no sea candidato
-                        if 'CANDIDATO A MAGISTER' not in texto_completo and 'MAESTRIA (C)' not in texto_completo:
-                            educacion['maestria'] = True
-                            educacion['maestria_completa'] = True
-                            grados_obtenidos.append('MAESTRIA (detectado en texto)')
-                            break
-            
-            # Si solo tiene maestría/doctorado en curso pero no completa
-            if 'MAESTRIA_EN_CURSO' in grados_en_curso and not educacion['maestria_completa']:
-                educacion['maestria'] = True
-            
+                        celda_titulo_txt = celdas[1].get_text(strip=True) if len(celdas) > 1 else ""
+                        institucion = celdas[2].get_text(strip=True) if len(celdas) > 2 else ""
+                        _clasificar_fila_completada(celda_grado, institucion)
+                        if celda_titulo_txt:
+                            titulos_texto.append(celda_titulo_txt)
+
+                elif 'EN CURSO' in titulo:
+                    for fila in filas:
+                        celdas = fila.find_all('td')
+                        if len(celdas) < 2 or not fila.get_text(strip=True):
+                            continue
+                        # Columnas: Centro de estudios | Carrera | Tipo de estudios | Fecha inicio.
+                        # El nivel del grado (Doctor/Maestro) puede venir en "Carrera"
+                        # (ej. "DOCTORADO EN SALUD PUBLICA") o en "Tipo de estudios"
+                        # (ej. "Doctor") según el registro — se revisan ambas.
+                        celda_carrera = celdas[1].get_text(strip=True).upper()
+                        celda_tipo = celdas[2].get_text(strip=True).upper() if len(celdas) > 2 else ""
+                        _clasificar_fila_en_curso(celda_carrera + ' ' + celda_tipo)
+                        if celdas[1].get_text(strip=True):
+                            titulos_texto.append(celdas[1].get_text(strip=True))
+
+            educacion['titulos_texto'] = titulos_texto
+
+            # Grados en curso solo cuentan (nivel inferior) si no hay uno YA
+            # completado del mismo tipo — nunca se marcan como completos.
             if 'DOCTORADO_EN_CURSO' in grados_en_curso and not educacion['doctorado_completo']:
                 educacion['doctorado'] = True
-            
+            if 'MAESTRIA_EN_CURSO' in grados_en_curso and not educacion['maestria_completa']:
+                educacion['maestria'] = True
+
             print(f"   ✓ Grados obtenidos: {grados_obtenidos if grados_obtenidos else 'Ninguno'}")
             if grados_en_curso:
                 print(f"   ⏳ Grados en curso: {grados_en_curso}")
-            
+
         except Exception as e:
             print(f"   ❌ Error extrayendo educación: {e}")
             import traceback
             traceback.print_exc()
-        
+
         return educacion
     
     def _extraer_publicaciones(self, soup: BeautifulSoup) -> Dict:
@@ -760,21 +767,45 @@ class ExtractorWebCVs:
                     filas = tabla.find_all('tr')
                     for fila in filas[1:]:
                         celdas = fila.find_all('td')
-                        if celdas:
-                            tipo = celdas[0].get_text(strip=True).upper() if len(celdas) > 0 else ""
-                            fila_text = fila.get_text().upper()
-                            
-                            if 'ARTÍCULO' in tipo or 'ARTICULO' in tipo or 'REVIEW' in tipo:
-                                resultado['articulos_indexados'] += 1
-                                resultado['total'] += 1
-                            
-                            # Detectar Scopus/WoS
-                            if 'SCOPUS' in fila_text:
-                                resultado['tiene_scopus'] = True
-                            if 'WOS' in fila_text or 'WEB OF SCIENCE' in fila_text:
-                                resultado['tiene_wos'] = True
-                            if 'Q1' in fila_text or 'Q2' in fila_text:
-                                resultado['tiene_scopus'] = True
+                        if not celdas:
+                            continue
+                        # Fila vacía (celdas sin contenido real, p.ej. tabla "vacía" con
+                        # una sola fila de td en blanco): no cuenta como producción.
+                        if not fila.get_text(strip=True):
+                            continue
+
+                        fila_text = fila.get_text().upper()
+                        tipo = celdas[0].get_text(strip=True).upper() if celdas else ""
+
+                        # CTI Vitae también lista TESIS (Bachelor/Master/PhD Thesis) en
+                        # esta misma tabla de "Producción Científica", pero una tesis
+                        # NO es un artículo indexado en Scopus/WoS (columna "Fuente"
+                        # vacía, sin DOI real de revista) — no debe contar aquí.
+                        if any(kw in tipo for kw in ('THESIS', 'TESIS')):
+                            continue
+
+                        # Determinar Scopus/WoS por el link de la columna "Fuente" (el
+                        # logo es una imagen sin texto visible, por eso se revisa el
+                        # href). Solo se cuenta como producción indexada real si hay
+                        # evidencia de fuente (Scopus/WoS) o cuartil — de lo contrario
+                        # (p.ej. sin DOI ni fuente, como una tesis) no se cuenta, para
+                        # no inflar C5 con filas que no son publicaciones indexadas.
+                        hrefs = ' '.join(a.get('href', '') for a in fila.find_all('a')).lower()
+                        es_scopus = 'scopus.com' in hrefs or 'scopus' in fila_text
+                        es_wos = ('webofscience' in hrefs or 'apps.webofknowledge' in hrefs or
+                                  'clarivate' in hrefs or 'wos' in fila_text or 'web of science' in fila_text)
+                        tiene_cuartil = 'Q1' in fila_text or 'Q2' in fila_text or 'Q3' in fila_text or 'Q4' in fila_text
+                        tiene_fuente = bool(celdas[6].get_text(strip=True)) if len(celdas) > 6 else False
+
+                        if not (es_scopus or es_wos or tiene_cuartil or tiene_fuente):
+                            continue
+
+                        resultado['articulos_indexados'] += 1
+                        resultado['total'] += 1
+                        if es_scopus or tiene_cuartil or not es_wos:
+                            resultado['tiene_scopus'] = True
+                        if es_wos:
+                            resultado['tiene_wos'] = True
                 
                 # OTRAS PRODUCCIONES (libros, artículos no indexados)
                 if 'OTRAS PRODUCCIONES' in prev_text:
@@ -843,43 +874,53 @@ class ExtractorWebCVs:
             return 0
     
     def _extraer_experiencia_laboral(self, soup: BeautifulSoup) -> List[Dict]:
-        """Extrae lista de experiencias laborales"""
+        """Extrae lista de experiencias laborales desde la sección "Experiencia
+        Laboral" de CTI Vitae.
+
+        La tabla real es HORIZONTAL (una fila = un cargo), con columnas fijas
+        por posición: [Institución, Cargo, Descripción del cargo, Cargo en
+        I+D+i, Fecha Inicio, Fecha Fin] — la primera fila son encabezados, no
+        datos. (Antes se asumía por error una tabla vertical tipo
+        etiqueta:valor, que trataba la fila de encabezados como un registro
+        real y descartaba silenciosamente todas las filas de cargos reales,
+        dejando C3 sin cargos estructurados y cayendo al texto completo de la
+        página — causa de falsos positivos por palabras sueltas.)
+        """
         experiencias = []
-        
+
         try:
-            experiencia_section = soup.find(string=re.compile(r'EXPERIENCIA LABORAL', re.IGNORECASE))
-            
-            if experiencia_section:
-                tabla = experiencia_section.find_parent('table') or experiencia_section.find_next('table')
-                
-                if tabla:
-                    filas = tabla.find_all('tr')
-                    
-                    experiencia_actual = {}
-                    for fila in filas:
-                        celdas = fila.find_all('td')
-                        
-                        if len(celdas) >= 2:
-                            campo = celdas[0].get_text(strip=True)
-                            valor = celdas[1].get_text(strip=True)
-                            
-                            if 'Institución' in campo:
-                                if experiencia_actual:
-                                    experiencias.append(experiencia_actual)
-                                experiencia_actual = {'institucion': valor}
-                            elif 'Cargo' in campo:
-                                experiencia_actual['cargo'] = valor
-                            elif 'Fecha Inicio' in campo:
-                                experiencia_actual['fecha_inicio'] = valor
-                            elif 'Fecha Fin' in campo:
-                                experiencia_actual['fecha_fin'] = valor
-                    
-                    if experiencia_actual:
-                        experiencias.append(experiencia_actual)
-        
+            heading = None
+            for h1 in soup.find_all('h1', class_='titulo_fichas_dos'):
+                if h1.get_text(strip=True).upper() == 'EXPERIENCIA LABORAL':
+                    heading = h1
+                    break
+
+            if heading is None:
+                return experiencias
+
+            tabla = heading.find_next('table')
+            if not tabla:
+                return experiencias
+
+            filas = tabla.find_all('tr')[1:]  # saltar fila de encabezados
+            for fila in filas:
+                celdas = fila.find_all('td')
+                if len(celdas) < 2 or not fila.get_text(strip=True):
+                    continue
+                valores = [c.get_text(strip=True) for c in celdas]
+                experiencia = {
+                    'institucion': valores[0] if len(valores) > 0 else '',
+                    'cargo': valores[1] if len(valores) > 1 else '',
+                    'descripcion_cargo': valores[2] if len(valores) > 2 else '',
+                    'cargo_iidi': valores[3] if len(valores) > 3 else '',
+                    'fecha_inicio': valores[4] if len(valores) > 4 else '',
+                    'fecha_fin': valores[5] if len(valores) > 5 else '',
+                }
+                experiencias.append(experiencia)
+
         except Exception as e:
             pass
-        
+
         return experiencias
     
     def _extraer_experiencia_docente(self, soup: BeautifulSoup) -> int:
@@ -987,7 +1028,20 @@ class ExtractorWebCVs:
                         for fila in filas[1:]:  # Saltar encabezado
                             celdas = fila.find_all('td')
                             texto_fila = fila.get_text().lower()
-                            
+                            institucion_fila = celdas[0].get_text(strip=True).lower() if celdas else ""
+
+                            # Este método (fallback general) solo debe contar
+                            # docencia UNIVERSITARIA, nunca colegios/educación
+                            # escolar — antes contaba cualquier cargo con la
+                            # palabra "docente" sin mirar la institución, lo que
+                            # inflaba C2 con profesores de colegio (K-12).
+                            es_institucion_escolar = any(kw in institucion_fila for kw in (
+                                'colegio', 'i.e.', 'i.e ', 'institucion educativa',
+                                'institución educativa', 'escuela primaria', 'escuela secundaria',
+                            ))
+                            if es_institucion_escolar:
+                                continue
+
                             # Verificar si es cargo docente
                             keywords_docente = ['docente', 'profesor', 'catedrático', 'catedratico',
                                                'instructor', 'maestro', 'teaching', 'lecturer',
@@ -999,7 +1053,7 @@ class ExtractorWebCVs:
                                              'director', 'directora', 'coordinador', 'coordinadora',
                                              'apoyo', 'encargado', 'responsable',
                                          ]))
-                            
+
                             if es_docente and len(celdas) >= 5:
                                 fecha_inicio_texto = celdas[-2].get_text(strip=True)
                                 fecha_fin_texto = celdas[-1].get_text(strip=True)

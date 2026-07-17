@@ -718,23 +718,47 @@ function seleccionarModo(modo) {
 function agregarLinkManual() {
     const input = document.getElementById('input-link-cti');
     if (!input) return;
-    const url = input.value.trim();
-    if (!url) return;
-    try {
-        new URL(url);
-    } catch (e) {
-        alert('⚠️ Ingresa un link válido (debe empezar con http:// o https://)');
-        return;
+    const crudo = input.value.trim();
+    if (!crudo) return;
+
+    // Si se pegaron varios links juntos (líneas, espacios, o incluso sin separador
+    // entre "https://...algo" y el siguiente "https://"), se separan en tokens
+    // individuales en vez de tratarlos como un solo link "Frankenstein".
+    const tokens = crudo
+        .split(/\s+/)
+        .flatMap(t => t.split(/(?=https?:\/\/)/i))
+        .map(t => t.trim())
+        .filter(Boolean);
+
+    let agregados = 0;
+    let duplicados = 0;
+    const invalidos = [];
+
+    for (const token of tokens) {
+        let urlValida;
+        try {
+            urlValida = new URL(token).toString();
+        } catch (e) {
+            invalidos.push(token);
+            continue;
+        }
+        if (listaLinksManual.includes(urlValida)) {
+            duplicados++;
+            continue;
+        }
+        listaLinksManual.push(urlValida);
+        agregados++;
     }
-    if (listaLinksManual.includes(url)) {
-        alert('⚠️ Ese link ya fue agregado');
-        input.value = '';
-        return;
-    }
-    listaLinksManual.push(url);
+
     input.value = '';
     input.focus();
     renderLinksManual();
+
+    if (invalidos.length > 0) {
+        alert(`⚠️ ${invalidos.length} texto(s) no son links válidos y no se agregaron:\n${invalidos.join('\n')}`);
+    } else if (agregados === 0 && duplicados > 0) {
+        alert('⚠️ Ese(s) link(s) ya estaban agregados');
+    }
 }
 
 function eliminarLinkManual(index) {

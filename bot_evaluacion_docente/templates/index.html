@@ -145,6 +145,7 @@
                                 class="links-input"
                                 placeholder="https://ctivitae.concytec.gob.pe/..."
                                 onkeydown="if(event.key==='Enter'){event.preventDefault();agregarLinkManual();}"
+                                onpaste="setTimeout(agregarLinkManual, 0)"
                             >
                             <button type="button" class="btn btn-primary" onclick="agregarLinkManual()">➕ Agregar</button>
                         </div>

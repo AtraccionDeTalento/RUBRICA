@@ -337,6 +337,10 @@ class MotorEvaluacion:
                 continue
             cargo_norm = normalizar(exp.get("cargo", ""))
             inst_norm = normalizar(exp.get("institucion", ""))
+            # Nunca contar como docencia universitaria un cargo en colegio/educación
+            # escolar (K-12), sin importar que el cargo diga "docente"/"tutor".
+            if any(kw in inst_norm for kw in ("colegio", "institucion educativa", "i.e.")):
+                continue
             es_docente = self.rubrica.es_cargo_docencia(cargo_norm) or \
                 any(kw in cargo_norm for kw in (
                     "docente", "profesor", "catedratico", "instructor",
@@ -493,12 +497,24 @@ class MotorEvaluacion:
             for k in out:
                 if k in pd:
                     out[k] = pd[k]
+            # El extractor (fuente CTI Vitae) ya cuenta filas reales de la tabla
+            # "Producción Científica" y sanea correctamente tiene_scopus/tiene_wos.
+            # NO se vuelve a buscar "scopus"/"q1"/"q2"/etc. en el texto completo de
+            # la página: ese encabezado de sección aparece en TODAS las fichas de
+            # CTI Vitae aunque la tabla esté vacía, así que ese matching generaba
+            # falsos positivos sistemáticos (C5=50/50 para candidatos sin ninguna
+            # producción real). Cuando ya tenemos publicaciones_detalle del
+            # extractor web, confiamos únicamente en esos datos estructurados.
+            return out
 
-        # Shape simple: 'publicaciones' int
+        # Shape simple: 'publicaciones' int (fuente PDF/legacy, sin extractor web)
         if isinstance(cv.get("publicaciones"), int):
             out["total"] = max(out["total"], cv["publicaciones"])
 
-        # Señales en texto (shape legacy 'produccion_academica' / texto)
+        # Señales en texto SOLO quando no hay publicaciones_detalle estructurado
+        # (p.ej. CVs en PDF sin ese campo). Aquí sí es razonable un fallback por
+        # palabras clave, porque el texto viene del propio CV del candidato y no
+        # de una plantilla web con encabezados fijos.
         prod = cv.get("produccion_academica") or []
         if isinstance(prod, str):
             prod = [prod]
@@ -638,11 +654,12 @@ class MotorEvaluacion:
             "supervisor", "supervisora",
             "coordinador", "coordinadora",
             "team lead", "lider de equipo", "lider tecnico",
+            "lider de", "líder de", "lider en", "líder en",
             "responsable de", "encargado de", "encargada de",
             "investigador principal", "jefe de proyecto",
             "finance manager", "administration manager",
-            "project manager", "operations manager",
-            "general manager",
+            "project manager", "operations manager", "service manager",
+            "general manager", "agile coach", "scrum master",
         ],
         "C3_4": [  # Intermedio / Junior
             "junior", " jr.", " jr ",
@@ -699,9 +716,12 @@ class MotorEvaluacion:
         # 1bis) Regex-based keywords for C3_1 (boundary-aware: cfo, ceo, director etc.)
         if cat is None:
             for pattern in self._C3_KEYWORDS.get("C3_1_regex", []):
-                if re.search(pattern, texto_busqueda_cargos):
+                m = re.search(pattern, texto_busqueda_cargos)
+                if m:
                     cat = "C3_1"
-                    evidencia_match = pattern.replace(r"\b", "").strip()
+                    # Mostrar el texto real que matcheó, no el patrón regex crudo
+                    # (antes se mostraba literalmente "gerente(?:a)?\s" al usuario).
+                    evidencia_match = m.group().strip()
                     break
 
         # 1ter) Fallback for English CVs: check FULL text for high-confidence
@@ -718,9 +738,10 @@ class MotorEvaluacion:
                 r"\badministration\s+and\s+finance\s+manager\b",
             ]
             for pattern in _EXECUTIVE_REGEX_FULLTEXT:
-                if re.search(pattern, texto):
+                m = re.search(pattern, texto)
+                if m:
                     cat = "C3_1"
-                    evidencia_match = pattern.replace(r"\b", "").replace(r"\s+", " ").strip()
+                    evidencia_match = m.group().strip()
                     break
 
         # 2) Mando medio (incluye cargos del diccionario_c3_profesional)
@@ -885,7 +906,13 @@ class MotorEvaluacion:
                         instituciones_norm.append(normalizar(name))
 
         texto_inst = " ; ".join(instituciones_norm)
-        texto_busqueda = texto_inst + " " + cv["texto_norm"]
+        # IMPORTANTE: si ya tenemos instituciones reales (de experiencia_laboral,
+        # o del fallback de texto en inglés), buscar el empleador SOLO ahí. Antes
+        # se agregaba siempre cv["texto_norm"] (texto completo de la página:
+        # educación, docencia, etc.), lo que hacía que la universidad donde el
+        # candidato ESTUDIÓ o DA CLASES apareciera como si fuera su empleador
+        # actual (falso positivo de Centro de Labores).
+        texto_busqueda = texto_inst if instituciones_norm else (texto_inst + " " + cv["texto_norm"])
 
         max_c4 = self.rubrica.max_criterio("C4")
 
@@ -991,28 +1018,31 @@ class MotorEvaluacion:
 
         # 1) Scopus / WoS / Elite Global — máxima categoría
         es_elite_mundial = any(kw in texto for kw in (
-            "premio nobel", "nobel prize", "nobel laureate", 
+            "premio nobel", "nobel prize", "nobel laureate",
             "premio cervantes", "premio pulitzer", "premio pritzker"
         ))
 
-        if es_elite_mundial or pub["tiene_scopus"] or pub["tiene_wos"] or pub["articulos_indexados"] > 0 or \
-           any(kw in texto for kw in ("scopus author identifier", "scopus", "web of science",
-                                       "renacyt", "concytec investigador", "orcid")):
-            # ORCID/RENACYT solos no garantizan Scopus, pero combinados con
-            # artículos indexados es la señal más fuerte. Si tenemos
-            # tiene_scopus o articulos_indexados sí podemos dar C5_1.
-            # AÑADIDO: Reconocimientos de élite mundial (Nobel) dan C5_1 directo.
-            if es_elite_mundial or pub["tiene_scopus"] or pub["tiene_wos"] or pub["articulos_indexados"] > 0:
-                just_str = "Reconocimiento Mundial Elite (ej. Premio Nobel)" if es_elite_mundial else f"Producción indexada Scopus/WoS — {pub['articulos_indexados']} artículo(s) indexado(s)"
-                return self._c5_resultado(
-                    "C5_1", max_c5,
-                    just_str,
-                    pub
-                )
+        # IMPORTANTE: NO buscar "scopus"/"orcid"/"web of science"/etc. en el texto
+        # completo de la página. CTI Vitae muestra ese encabezado de sección
+        # ("Producción Científica - Scopus/WoS") en TODAS las fichas, incluso
+        # cuando la tabla está vacía, así que ese matching daba falsos positivos
+        # sistemáticos (C5=50/50 a candidatos sin ninguna producción real).
+        # El extractor (`_extraer_publicaciones`) ya cuenta filas reales de la
+        # tabla y sanea `tiene_scopus`/`tiene_wos` a False si no hay artículos
+        # indexados de verdad — confiamos únicamente en esos datos estructurados.
+        if es_elite_mundial or pub["tiene_scopus"] or pub["tiene_wos"] or pub["articulos_indexados"] > 0:
+            just_str = "Reconocimiento Mundial Elite (ej. Premio Nobel)" if es_elite_mundial else f"Producción indexada Scopus/WoS — {pub['articulos_indexados']} artículo(s) indexado(s)"
+            return self._c5_resultado(
+                "C5_1", max_c5,
+                just_str,
+                pub
+            )
 
         # 2) Libro o revista indexada (sin Scopus explícito)
-        if pub["libros"] > 0 or any(kw in texto for kw in ("isbn", "issn", "libro publicado",
-                                                              "revista indexada", "scielo", "redalyc")):
+        # Igual que en C5_1: no se busca "isbn"/"scielo"/etc. en el texto
+        # completo porque son encabezados de sección presentes aunque la
+        # tabla esté vacía. Solo se confía en el conteo real de libros.
+        if pub["libros"] > 0:
             return self._c5_resultado(
                 "C5_2", max_c5,
                 f"Libro / revista indexada ({pub['libros']} libro(s))",
@@ -1020,9 +1050,7 @@ class MotorEvaluacion:
             )
 
         # 3) Investigación / proyectos
-        if pub["proyectos"] > 0 or any(kw in texto for kw in ("proyecto de investigacion",
-                                                                 "proyectos de investigacion",
-                                                                 "innovacion", "investigacion aplicada")):
+        if pub["proyectos"] > 0:
             return self._c5_resultado(
                 "C5_3", max_c5,
                 f"Investigación / proyectos ({pub['proyectos']} proyecto(s))",
@@ -1030,9 +1058,7 @@ class MotorEvaluacion:
             )
 
         # 4) Producción inicial (documento técnico)
-        if pub["articulos"] > 0 or any(kw in texto for kw in ("documento tecnico", "informe tecnico",
-                                                                 "technical report", "conference proceedings",
-                                                                 "ponencia")):
+        if pub["articulos"] > 0:
             return self._c5_resultado(
                 "C5_4", max_c5,
                 f"Producción inicial / técnica ({pub['articulos']} artículo(s))",

@@ -261,10 +261,24 @@ class ClasificadorTalento:
         perfil_secundario = roles_ordenados[1][0] if len(roles_ordenados) > 1 else ""
 
         # ── Detectar Dominio de Conocimiento ─────────────────────────────────
+        # IMPORTANTE: no usar texto_cv (texto completo de la página web) para
+        # esto. CTI Vitae muestra tablas de clasificación OCDE con encabezados
+        # como "Temática Médica y de la Salud" en TODAS las fichas sin importar
+        # la carrera real del candidato, lo que etiquetaba a cualquiera (ej. un
+        # ingeniero de sistemas) como "especialista en Salud" por accidente.
+        # Se usa solo el título/carrera real (educación) y los cargos/institución
+        # de su experiencia laboral real.
+        texto_dominio_parts = list(cv_data.get('educacion', {}).get('titulos_texto', []) or [])
+        for exp in cv_data.get('experiencia_laboral', []) or []:
+            if isinstance(exp, dict):
+                texto_dominio_parts.append(exp.get('cargo', ''))
+                texto_dominio_parts.append(exp.get('institucion', ''))
+        texto_dominio = ' '.join(texto_dominio_parts).lower()
+
         dominio = "General"
         for nombre_dominio, patrones in DOMINIOS:
             for patron in patrones:
-                if re.search(patron, texto_cv):
+                if re.search(patron, texto_dominio):
                     dominio = nombre_dominio
                     break
             if dominio != "General":
