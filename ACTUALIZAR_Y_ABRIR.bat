@@ -8,8 +8,8 @@ color 0B
 ::  Un solo archivo para cualquier PC:
 ::   - Si es la PRIMERA vez (no existe el proyecto todavia): lo descarga
 ::     completo desde GitHub.
-::   - Si YA existe: baja automaticamente la ultima actualizacion antes
-::     de abrir la app.
+::   - Si YA existe: fuerza que quede IDENTICO a GitHub (descarta
+::     cualquier diferencia local) antes de abrir la app.
 ::  Puedes copiar este .bat solo (sin el resto del proyecto) a una PC
 ::  nueva, ejecutarlo, y el se encarga de traer todo.
 :: ======================================================================
@@ -74,43 +74,60 @@ if %errorlevel% neq 0 (
 echo.
 echo [OK] Proyecto descargado correctamente.
 echo.
-goto :dependencias
+goto :mostrar_version
 
 :actualizar
 echo Proyecto encontrado en: %PROJECT_DIR%
-echo Buscando actualizaciones en GitHub...
+echo Forzando sincronizacion con GitHub...
 echo.
 pushd "%PROJECT_DIR%"
 
-git fetch origin main >nul 2>&1
-
-for /f %%i in ('git rev-parse HEAD') do set LOCAL_REV=%%i
-for /f %%i in ('git rev-parse origin/main') do set REMOTE_REV=%%i
-
-if "!LOCAL_REV!"=="!REMOTE_REV!" (
-    echo [OK] Ya tienes la ultima version. No hay actualizaciones pendientes.
-) else (
-    echo Hay una actualizacion nueva. Descargando cambios...
-    git pull origin main
-    if !errorlevel! neq 0 (
-        color 0C
-        echo [ERROR] No se pudo actualizar. Puede que tengas cambios locales sin guardar.
-        echo Contacta al administrador del proyecto antes de continuar.
-        popd
-        pause
-        exit /b 1
-    )
-    echo [OK] Proyecto actualizado a la ultima version.
+:: IMPORTANTE: no confiar en la salida de "git fetch" en silencio. Si
+:: internet falla, un firewall bloquea github.com, o hay cualquier otro
+:: problema, ESTO DEBE DETENER el proceso con un error visible en vez de
+:: seguir como si ya estuviera actualizado (ese era el bug anterior).
+git fetch origin main
+if !errorlevel! neq 0 (
+    color 0C
+    echo.
+    echo [ERROR] No se pudo conectar con GitHub para revisar actualizaciones.
+    echo Verifica tu conexion a internet e intenta de nuevo.
+    popd
+    pause
+    exit /b 1
 )
+
+:: Forzar que la carpeta local quede EXACTAMENTE igual a GitHub,
+:: descartando cualquier archivo modificado localmente. Esto evita que
+:: un "git pull" normal se quede a medias por conflictos y el usuario
+:: termine viendo una version vieja sin darse cuenta.
+git reset --hard origin/main
+if !errorlevel! neq 0 (
+    color 0C
+    echo [ERROR] No se pudo sincronizar con la version de GitHub.
+    popd
+    pause
+    exit /b 1
+)
+git clean -fd >nul 2>&1
+
 popd
 echo.
+echo [OK] Proyecto sincronizado con GitHub.
+echo.
 
-:dependencias
+:mostrar_version
 cd /d "%PROJECT_DIR%"
+
+:: --- Mostrar version instalada, para poder confirmar a simple vista ---
+echo --------------------------------------------------------------
+for /f "delims=" %%i in ('git log -1 --date^=format:"%%Y-%%m-%%d %%H:%%M" --pretty^=format:"%%h  %%ad  %%s"') do echo   Version instalada: %%i
+echo --------------------------------------------------------------
+echo.
 
 :: --- 4) Verificar dependencias de Electron (solo la 1ra vez o si faltan) -
 if not exist "node_modules\electron" (
-    echo Instalando motor grafico (Electron) por primera vez, esto puede tardar unos minutos...
+    echo Instalando motor grafico ^(Electron^) por primera vez, esto puede tardar unos minutos...
     call npm install
     if %errorlevel% neq 0 (
         color 0C
