@@ -112,6 +112,67 @@ function createWindow() {
   });
 }
 
+// ─── Auto-actualizacion desde GitHub al iniciar la app ───────────────────────
+// Si la carpeta de la app es un repositorio Git (clonado con
+// ACTUALIZAR_Y_ABRIR.bat, o en desarrollo), se revisa GitHub CADA VEZ que se
+// abre la app -sin importar como se abra (exe, acceso directo, npm start)-
+// y si hay una version mas nueva, se descarga antes de arrancar el servidor.
+// Si algo falla (sin internet, no es un repo git, etc.) NO bloquea la app:
+// simplemente se sigue con el codigo que ya hay en disco.
+function runGitCmd(args, cwd) {
+  return new Promise((resolve, reject) => {
+    const proc = spawn('git', args, { cwd, shell: false });
+    let out = '';
+    let err = '';
+    proc.stdout.on('data', d => { out += d.toString(); });
+    proc.stderr.on('data', d => { err += d.toString(); });
+    proc.on('close', code => {
+      if (code === 0) resolve(out.trim());
+      else reject(new Error(err || `git ${args.join(' ')} salio con codigo ${code}`));
+    });
+    proc.on('error', reject);
+  });
+}
+
+async function checkForUpdates() {
+  const baseDir = app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname;
+
+  if (!fs.existsSync(path.join(baseDir, '.git'))) {
+    console.log('[UPDATE] No es un repositorio Git (build empaquetado sin .git) - se omite auto-actualizacion.');
+    return;
+  }
+
+  try {
+    if (mainWindow) mainWindow.loadURL(loadingPage(
+      'Buscando actualizaciones...',
+      'Revisando si hay una version nueva en GitHub...'
+    ));
+
+    await runGitCmd(['fetch', 'origin', 'main'], baseDir);
+    const local = await runGitCmd(['rev-parse', 'HEAD'], baseDir);
+    const remote = await runGitCmd(['rev-parse', 'origin/main'], baseDir);
+
+    if (local === remote) {
+      console.log('[UPDATE] Ya esta en la ultima version:', local.slice(0, 7));
+      return;
+    }
+
+    console.log(`[UPDATE] Nueva version encontrada (${local.slice(0,7)} -> ${remote.slice(0,7)}). Actualizando...`);
+    if (mainWindow) mainWindow.loadURL(loadingPage(
+      'Actualizando el sistema...',
+      'Se encontro una version nueva, descargando los cambios...'
+    ));
+
+    await runGitCmd(['reset', '--hard', 'origin/main'], baseDir);
+    await runGitCmd(['clean', '-fd'], baseDir);
+    console.log('[UPDATE] Actualizacion completada.');
+  } catch (e) {
+    // No hay internet, GitHub no responde, o cualquier otro problema:
+    // se continua con el codigo actual en vez de bloquear el arranque.
+    console.warn('[UPDATE] No se pudo revisar/aplicar actualizaciones (se continua sin actualizar):', e.message);
+  }
+}
+
 // ─── Ejecutar un comando Python y esperar a que termine ──────────────────────
 function runPythonCmd(pythonExe, args, cwd) {
   return new Promise((resolve, reject) => {
@@ -332,8 +393,13 @@ function checkServerReady(attempt) {
 }
 
 // ─── Ciclo de vida de la app ──────────────────────────────────────────────────
-app.on('ready', () => {
+app.on('ready', async () => {
   createWindow();
+  try {
+    await checkForUpdates();
+  } catch (e) {
+    console.warn('[UPDATE] Error inesperado revisando actualizaciones:', e.message);
+  }
   setupAndStartServer().catch(err => {
     console.error('[BOOT] Error inesperado:', err);
     if (mainWindow) mainWindow.loadURL(loadingPage(
