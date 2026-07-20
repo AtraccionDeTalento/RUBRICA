@@ -114,75 +114,16 @@ function createWindow() {
   });
 }
 
-// ─── Auto-actualizacion desde GitHub al iniciar la app ───────────────────────
-// Si la carpeta de la app es un repositorio Git (clonado con
-// ACTUALIZAR_Y_ABRIR.bat, o en desarrollo), se revisa GitHub CADA VEZ que se
-// abre la app -sin importar como se abra (exe, acceso directo, npm start)-
-// y si hay una version mas nueva, se descarga antes de arrancar el servidor.
-// Si algo falla (sin internet, no es un repo git, etc.) NO bloquea la app:
-// simplemente se sigue con el codigo que ya hay en disco.
-function runGitCmd(args, cwd) {
-  return new Promise((resolve, reject) => {
-    const proc = spawn('git', args, { cwd, shell: false });
-    let out = '';
-    let err = '';
-    proc.stdout.on('data', d => { out += d.toString(); });
-    proc.stderr.on('data', d => { err += d.toString(); });
-    proc.on('close', code => {
-      if (code === 0) resolve(out.trim());
-      else reject(new Error(err || `git ${args.join(' ')} salio con codigo ${code}`));
-    });
-    proc.on('error', reject);
-  });
-}
-
-async function checkForUpdates() {
-  const baseDir = app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname;
-
-  if (!fs.existsSync(path.join(baseDir, '.git'))) {
-    console.log('[UPDATE] No es un repositorio Git (build empaquetado sin .git) - se omite auto-actualizacion.');
-    return;
-  }
-
-  try {
-    if (mainWindow) mainWindow.loadURL(loadingPage(
-      'Buscando actualizaciones...',
-      'Revisando si hay una version nueva en GitHub...'
-    ));
-
-    await runGitCmd(['fetch', 'origin', 'main'], baseDir);
-    const local = await runGitCmd(['rev-parse', 'HEAD'], baseDir);
-    const remote = await runGitCmd(['rev-parse', 'origin/main'], baseDir);
-
-    if (local === remote) {
-      console.log('[UPDATE] Ya esta en la ultima version:', local.slice(0, 7));
-      return;
-    }
-
-    console.log(`[UPDATE] Nueva version encontrada (${local.slice(0,7)} -> ${remote.slice(0,7)}). Actualizando...`);
-    if (mainWindow) mainWindow.loadURL(loadingPage(
-      'Actualizando el sistema...',
-      'Se encontro una version nueva, descargando los cambios...'
-    ));
-
-    await runGitCmd(['reset', '--hard', 'origin/main'], baseDir);
-    await runGitCmd(['clean', '-fd'], baseDir);
-    console.log('[UPDATE] Actualizacion completada.');
-  } catch (e) {
-    // No hay internet, GitHub no responde, o cualquier otro problema:
-    // se continua con el codigo actual en vez de bloquear el arranque.
-    console.warn('[UPDATE] No se pudo revisar/aplicar actualizaciones (se continua sin actualizar):', e.message);
-  }
-}
-
-// ─── Boton "Actualizar Sistema" (sin depender de git) ────────────────────────
-// checkForUpdates() de arriba solo funciona si la carpeta de la app tiene
-// ".git" (clonada con ACTUALIZAR_Y_ABRIR.bat, o en desarrollo). Una instalacion
-// real -instalada con el instalador NSIS, o una copia de dist_electron\win-unpacked-
-// NO tiene ".git" (se excluye a proposito al empaquetar), asi que en esos casos
-// la app nunca se actualizaba sola. Esto resuelve eso: descarga cada archivo de
-// codigo directo desde GitHub (raw.githubusercontent.com) y verifica su hash
-// contra el que reporta la propia API de GitHub, sin necesitar git instalado.
+// ─── Auto-actualizacion desde GitHub SIN depender de git ────────────────────
+// El ejecutable no debe requerir que la PC tenga git instalado para
+// funcionar ni para actualizarse -git solo lo usa ACTUALIZAR_Y_ABRIR.bat
+// como atajo de instalacion para gente tecnica, nunca la app en si-.
+// Por eso la app descarga cada archivo de codigo directo desde GitHub via
+// HTTPS (API de GitHub + raw.githubusercontent.com) y verifica su hash
+// contra el que reporta la propia API, sin necesitar git para nada. Esto se
+// ejecuta automaticamente CADA VEZ que se abre la app -sin importar como se
+// abra (exe, acceso directo, npm start)- y tambien se puede disparar a mano
+// con el boton "Actualizar Sistema" (ver ipcMain.handle mas abajo).
 const REPO_SLUG = 'AtraccionDeTalento/RUBRICA';
 const REPO_BRANCH = 'main';
 
@@ -231,7 +172,17 @@ const ARCHIVOS_ACTUALIZABLES = [
 
 function enviarProgresoActualizacion(mensaje) {
   console.log('[ACTUALIZAR-SISTEMA] ' + mensaje);
-  if (mainWindow) mainWindow.webContents.send('actualizar-sistema-progreso', mensaje);
+  if (!mainWindow) return;
+  // Si la app ya cargo la pantalla real (http://127.0.0.1:5000), este mensaje
+  // es del boton manual "Actualizar Sistema": se manda por IPC a esa pantalla.
+  // Si todavia esta en la pantalla de carga (arranque automatico), se
+  // actualiza la pantalla de carga misma para que se vea el progreso.
+  const urlActual = mainWindow.webContents.getURL();
+  if (urlActual.startsWith('http://127.0.0.1:5000')) {
+    mainWindow.webContents.send('actualizar-sistema-progreso', mensaje);
+  } else {
+    mainWindow.loadURL(loadingPage('Actualizando el sistema...', mensaje));
+  }
 }
 
 function httpsGetJson(url) {
@@ -600,11 +551,21 @@ function checkServerReady(attempt) {
 // ─── Ciclo de vida de la app ──────────────────────────────────────────────────
 app.on('ready', async () => {
   createWindow();
+
+  // Revisar actualizaciones SIEMPRE al abrir la app, sin depender de git.
+  // Si actualizarSistemaSinGit() aplico una actualizacion, ya arranco el
+  // servidor por su cuenta (ver el final de esa funcion); si no habia nada
+  // nuevo o la revision fallo (sin internet, etc.), arrancamos aqui como de
+  // costumbre - nunca se bloquea el arranque de la app por esto.
+  let resultado = { actualizado: false };
   try {
-    await checkForUpdates();
+    resultado = await actualizarSistemaSinGit();
   } catch (e) {
     console.warn('[UPDATE] Error inesperado revisando actualizaciones:', e.message);
   }
+
+  if (resultado.actualizado) return;
+
   setupAndStartServer().catch(err => {
     console.error('[BOOT] Error inesperado:', err);
     if (mainWindow) mainWindow.loadURL(loadingPage(

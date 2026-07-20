@@ -30,3 +30,6 @@ docs/Analisis_*.xlsx
 
 # Config local del editor / claude
 .claude/
+
+# Marcador de version del auto-actualizador (main.js) - local por PC
+.version_commit
