@@ -46,16 +46,69 @@ exit /b 1
 
 :ps_ok
 :: --- 2) Detectar si ya estamos DENTRO del proyecto ----------------------
-if exist "%SCRIPT_DIR%\bot_evaluacion_docente\app_web.py" (
-    set "PROJECT_DIR=%SCRIPT_DIR%"
-    goto :actualizar
-)
+if not exist "%SCRIPT_DIR%\bot_evaluacion_docente\app_web.py" goto :buscar_subcarpeta_rubrica
+set "PROJECT_DIR=%SCRIPT_DIR%"
+goto :actualizar
+
+:buscar_subcarpeta_rubrica
 
 :: --- 3) Si no, buscar/crear una subcarpeta "RUBRICA" junto a este .bat -
 set "PROJECT_DIR=%SCRIPT_DIR%\RUBRICA"
 
 if exist "%PROJECT_DIR%\bot_evaluacion_docente\app_web.py" goto :actualizar
 
+:: --- 3bis) Preguntar si ya existe una instalacion en OTRA carpeta ------
+:: No se puede asumir que el sistema siempre vive junto a este .bat o en
+:: una subcarpeta "RUBRICA" -- por ejemplo, la version empaquetada de
+:: Electron puede estar en una ruta como
+:: "...\dist_electron\win-unpacked\" con un nombre y ubicacion distintos
+:: en cada PC. Si no se encontro automaticamente, se pregunta antes de
+:: asumir que hay que instalar una copia nueva (para no terminar con
+:: instalaciones duplicadas sin querer).
+echo No encontre el sistema instalado automaticamente en esta carpeta.
+echo.
+set "RUTA_EXISTENTE="
+set /p "RUTA_EXISTENTE=¿Ya tienes el sistema instalado en OTRA carpeta de esta PC? Si es asi, pega aqui la ruta completa a esa carpeta y presiona Enter (o solo Enter para instalarlo aqui de cero): "
+
+if "%RUTA_EXISTENTE%"=="" goto :verificar_rubrica_vacia
+
+:: Quitar comillas si el usuario pego la ruta con comillas (comun al copiar desde el Explorador)
+set "RUTA_EXISTENTE=%RUTA_EXISTENTE:"=%"
+
+:: NOTA: comparaciones de una sola linea a proposito (sin bloques "if (...)"),
+:: porque la ruta la escribe el usuario y podria traer parentesis (ej. una
+:: carpeta "Nueva carpeta (2)"), lo que rompe los bloques de varias lineas.
+if not exist "%RUTA_EXISTENTE%\bot_evaluacion_docente\app_web.py" goto :probar_carpeta_contenedora
+set "PROJECT_DIR=%RUTA_EXISTENTE%"
+echo.
+echo [OK] Encontrado. Usare esta carpeta: %PROJECT_DIR%
+echo.
+goto :actualizar
+
+:probar_carpeta_contenedora
+:: Si nos dieron la ruta al .exe empaquetado en vez de la carpeta que lo
+:: contiene (ej. "...\win-unpacked\Evaluacion Docente USIL.exe"), usar la
+:: carpeta contenedora.
+for %%F in ("%RUTA_EXISTENTE%") do set "RUTA_EXISTENTE_DIR=%%~dpF"
+set "RUTA_EXISTENTE_DIR=%RUTA_EXISTENTE_DIR:~0,-1%"
+if not exist "%RUTA_EXISTENTE_DIR%\bot_evaluacion_docente\app_web.py" goto :ruta_existente_invalida
+set "PROJECT_DIR=%RUTA_EXISTENTE_DIR%"
+echo.
+echo [OK] Encontrado. Usare esta carpeta: %PROJECT_DIR%
+echo.
+goto :actualizar
+
+:ruta_existente_invalida
+color 0C
+echo.
+echo [ERROR] No encontre "bot_evaluacion_docente\app_web.py" en esa ruta:
+echo   %RUTA_EXISTENTE%
+echo Verifica la ruta (debe ser la carpeta que contiene "bot_evaluacion_docente",
+echo no un acceso directo) y vuelve a ejecutar este archivo .bat.
+pause
+exit /b 1
+
+:verificar_rubrica_vacia
 if not exist "%PROJECT_DIR%" goto :descargar_primera_vez
 
 :: Existe una carpeta "RUBRICA" pero no parece el proyecto (por ejemplo,
@@ -103,9 +156,9 @@ echo Revisando si hay una version nueva en GitHub...
 echo.
 
 set "LOCAL_SHA="
-if exist "%PROJECT_DIR%\.version_commit" (
-    set /p LOCAL_SHA=<"%PROJECT_DIR%\.version_commit"
-)
+if not exist "%PROJECT_DIR%\.version_commit" goto :leer_local_sha_fin
+set /p LOCAL_SHA=<"%PROJECT_DIR%\.version_commit"
+:leer_local_sha_fin
 
 set "REMOTE_SHA="
 for /f "delims=" %%s in ('powershell -NoProfile -Command "try { (Invoke-RestMethod -Uri 'https://api.github.com/repos/%REPO_SLUG%/commits/%REPO_BRANCH%' -Headers @{'User-Agent'='RUBRICA-updater'}).sha } catch { 'ERROR' }"') do set "REMOTE_SHA=%%s"
@@ -140,12 +193,13 @@ goto :mostrar_version
 cd /d "%PROJECT_DIR%"
 
 echo --------------------------------------------------------------
-if exist "%PROJECT_DIR%\.version_commit" (
-    set /p VERSION_MOSTRAR=<"%PROJECT_DIR%\.version_commit"
-    echo   Version instalada (commit^): !VERSION_MOSTRAR:~0,7!
-) else (
-    echo   Version instalada: desconocida
-)
+if not exist "%PROJECT_DIR%\.version_commit" goto :mostrar_version_desconocida
+set /p VERSION_MOSTRAR=<"%PROJECT_DIR%\.version_commit"
+echo   Version instalada (commit^): !VERSION_MOSTRAR:~0,7!
+goto :mostrar_version_fin
+:mostrar_version_desconocida
+echo   Version instalada: desconocida
+:mostrar_version_fin
 echo --------------------------------------------------------------
 echo.
 
