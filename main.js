@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { spawn } = require('child_process');
 const http = require('http');
+const https = require('https');
+const crypto = require('crypto');
 const fs = require('fs');
 
 let mainWindow;
@@ -172,6 +174,209 @@ async function checkForUpdates() {
     console.warn('[UPDATE] No se pudo revisar/aplicar actualizaciones (se continua sin actualizar):', e.message);
   }
 }
+
+// ─── Boton "Actualizar Sistema" (sin depender de git) ────────────────────────
+// checkForUpdates() de arriba solo funciona si la carpeta de la app tiene
+// ".git" (clonada con ACTUALIZAR_Y_ABRIR.bat, o en desarrollo). Una instalacion
+// real -instalada con el instalador NSIS, o una copia de dist_electron\win-unpacked-
+// NO tiene ".git" (se excluye a proposito al empaquetar), asi que en esos casos
+// la app nunca se actualizaba sola. Esto resuelve eso: descarga cada archivo de
+// codigo directo desde GitHub (raw.githubusercontent.com) y verifica su hash
+// contra el que reporta la propia API de GitHub, sin necesitar git instalado.
+const REPO_SLUG = 'AtraccionDeTalento/RUBRICA';
+const REPO_BRANCH = 'main';
+
+// Lista explicita (no automatica) de los archivos que este boton actualiza.
+// Solo "codigo y datos de la app" -- nunca main.js/preload.js/package.json/
+// node_modules ni los .dll de Electron: eso requiere un instalador nuevo, no
+// un update de contenido (igual que ya se maneja para Sistema de Vacaciones).
+const ARCHIVOS_ACTUALIZABLES = [
+  'servidor.py',
+  'bot_evaluacion_docente/actualizar_nombres_links.py',
+  'bot_evaluacion_docente/analizador_experiencia.py',
+  'bot_evaluacion_docente/analizador_rubrica.py',
+  'bot_evaluacion_docente/analizar_links.py',
+  'bot_evaluacion_docente/app_web.py',
+  'bot_evaluacion_docente/buscador_web_cv.py',
+  'bot_evaluacion_docente/clasificador_talento.py',
+  'bot_evaluacion_docente/compilar.py',
+  'bot_evaluacion_docente/config.py',
+  'bot_evaluacion_docente/extractor_cvs.py',
+  'bot_evaluacion_docente/extractor_web_cvs.py',
+  'bot_evaluacion_docente/extraer_links_columna_k.py',
+  'bot_evaluacion_docente/fix.py',
+  'bot_evaluacion_docente/generador_decisiones.py',
+  'bot_evaluacion_docente/generador_decisiones_mejorado.py',
+  'bot_evaluacion_docente/generador_decisiones_nuevo.py',
+  'bot_evaluacion_docente/generador_reportes.py',
+  'bot_evaluacion_docente/launcher.py',
+  'bot_evaluacion_docente/logger_error.py',
+  'bot_evaluacion_docente/main.py',
+  'bot_evaluacion_docente/motor_evaluacion.py',
+  'bot_evaluacion_docente/procesar_cvs_web.py',
+  'bot_evaluacion_docente/rubrica_loader.py',
+  'bot_evaluacion_docente/run_server.py',
+  'bot_evaluacion_docente/requirements.txt',
+  'bot_evaluacion_docente/requerimientos_2026.json',
+  'bot_evaluacion_docente/templates/index.html',
+  'bot_evaluacion_docente/static/script.js',
+  'bot_evaluacion_docente/static/styles.css',
+  'Rubrica/Criterios 2025.json',
+  'Rubrica/DTC DTINV.json',
+  'Rubrica/PRACTITIONER DOCENTE CARRERA MH.json',
+  'Rubrica/diccionario_c2_docencia.json',
+  'Rubrica/diccionario_c3_profesional.json',
+  'Rubrica/empresas_top500.json'
+];
+
+function enviarProgresoActualizacion(mensaje) {
+  console.log('[ACTUALIZAR-SISTEMA] ' + mensaje);
+  if (mainWindow) mainWindow.webContents.send('actualizar-sistema-progreso', mensaje);
+}
+
+function httpsGetJson(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'RUBRICA-auto-update', 'Accept': 'application/vnd.github+json' } }, (res) => {
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        reject(new Error(`GitHub API respondio ${res.statusCode} para ${url}`));
+        return;
+      }
+      let data = '';
+      res.on('data', (chunk) => { data += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); } catch (e) { reject(e); }
+      });
+    }).on('error', reject);
+  });
+}
+
+function httpsGetBuffer(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'RUBRICA-auto-update' } }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        res.resume();
+        httpsGetBuffer(res.headers.location).then(resolve, reject);
+        return;
+      }
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        res.resume();
+        reject(new Error(`HTTP ${res.statusCode} descargando ${url}`));
+        return;
+      }
+      const chunks = [];
+      res.on('data', (chunk) => chunks.push(chunk));
+      res.on('end', () => resolve(Buffer.concat(chunks)));
+    }).on('error', reject);
+  });
+}
+
+// El hash que usa git internamente para identificar un blob -- comparar contra
+// esto verifica el archivo contra lo que GitHub realmente tiene registrado,
+// no solo contra si mismo (mas fuerte que solo "se descargo sin cortarse").
+function gitBlobSha1(buffer) {
+  const header = Buffer.from(`blob ${buffer.length}\0`, 'utf8');
+  return crypto.createHash('sha1').update(header).update(buffer).digest('hex');
+}
+
+function encodeRepoPath(relPath) {
+  return relPath.split('/').map(encodeURIComponent).join('/');
+}
+
+async function obtenerArbolRemoto(commitSha) {
+  const url = `https://api.github.com/repos/${REPO_SLUG}/git/trees/${commitSha}?recursive=1`;
+  const arbol = await httpsGetJson(url);
+  const mapa = new Map();
+  for (const entrada of (arbol.tree || [])) {
+    if (entrada.type === 'blob') mapa.set(entrada.path, entrada.sha);
+  }
+  return mapa;
+}
+
+async function descargarArchivoVerificado(relPath, shaEsperado, baseDir) {
+  const destino = path.join(baseDir, ...relPath.split('/'));
+  const url = `https://raw.githubusercontent.com/${REPO_SLUG}/${REPO_BRANCH}/${encodeRepoPath(relPath)}`;
+  let ultimoError = null;
+  for (let intento = 1; intento <= 3; intento++) {
+    try {
+      const contenido = await httpsGetBuffer(url);
+      if (shaEsperado && gitBlobSha1(contenido) !== shaEsperado) {
+        throw new Error('El archivo descargado no coincide con el hash reportado por GitHub');
+      }
+      fs.mkdirSync(path.dirname(destino), { recursive: true });
+      const tmp = destino + '.tmp';
+      fs.writeFileSync(tmp, contenido);
+      fs.renameSync(tmp, destino);
+      return true;
+    } catch (e) {
+      ultimoError = e;
+      await new Promise((r) => setTimeout(r, 500));
+    }
+  }
+  console.warn(`[ACTUALIZAR-SISTEMA] Fallo descargando ${relPath}:`, ultimoError && ultimoError.message);
+  return false;
+}
+
+async function actualizarSistemaSinGit() {
+  const baseDir = app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname;
+  const marcadorVersion = path.join(baseDir, '.version_commit');
+
+  try {
+    enviarProgresoActualizacion('Buscando la ultima version en GitHub...');
+    const commitInfo = await httpsGetJson(`https://api.github.com/repos/${REPO_SLUG}/commits/${REPO_BRANCH}`);
+    const remoteSha = commitInfo.sha;
+
+    let localSha = null;
+    if (fs.existsSync(marcadorVersion)) {
+      try { localSha = fs.readFileSync(marcadorVersion, 'utf8').trim(); } catch (e) {}
+    }
+
+    if (localSha && localSha === remoteSha) {
+      return { ok: true, actualizado: false, mensaje: 'Ya tienes la ultima version del sistema.' };
+    }
+
+    enviarProgresoActualizacion('Descargando lista de archivos...');
+    const arbol = await obtenerArbolRemoto(remoteSha);
+
+    enviarProgresoActualizacion('Cerrando el servidor actual...');
+    killPythonServer();
+    await new Promise((r) => setTimeout(r, 1000));
+
+    let ok = 0;
+    const fallidos = [];
+    for (const relPath of ARCHIVOS_ACTUALIZABLES) {
+      enviarProgresoActualizacion(`Actualizando ${relPath}...`);
+      const shaEsperado = arbol.get(relPath) || null;
+      const exito = await descargarArchivoVerificado(relPath, shaEsperado, baseDir);
+      if (exito) ok++; else fallidos.push(relPath);
+    }
+
+    if (fallidos.length === 0) {
+      fs.writeFileSync(marcadorVersion, remoteSha, 'utf8');
+    }
+
+    enviarProgresoActualizacion('Reiniciando el servidor...');
+    bootAttempt++;
+    await setupAndStartServer();
+
+    return {
+      ok: true,
+      actualizado: true,
+      archivosActualizados: ok,
+      archivosFallidos: fallidos,
+      mensaje: fallidos.length === 0
+        ? `Sistema actualizado correctamente (${ok} archivos).`
+        : `Actualizado con avisos: ${ok} archivos bien, ${fallidos.length} fallaron (${fallidos.join(', ')}). Puedes intentar de nuevo.`
+    };
+  } catch (e) {
+    console.error('[ACTUALIZAR-SISTEMA] Error:', e);
+    return { ok: false, actualizado: false, mensaje: `No se pudo actualizar: ${e.message}` };
+  }
+}
+
+ipcMain.handle('actualizar-sistema', async () => {
+  return actualizarSistemaSinGit();
+});
 
 // ─── Ejecutar un comando Python y esperar a que termine ──────────────────────
 function runPythonCmd(pythonExe, args, cwd) {

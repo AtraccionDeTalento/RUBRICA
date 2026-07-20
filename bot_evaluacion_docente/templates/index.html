@@ -24,9 +24,57 @@
 <body>
     <div class="container">
         <header>
+            <button id="btn-actualizar-sistema" class="btn-actualizar-sistema" onclick="actualizarSistemaDesktop()" style="display:none;" title="Descarga la ultima version del sistema desde GitHub">🔄 Actualizar Sistema</button>
             <h1>🎓 People Analytics - Evaluación Docente</h1>
             <p class="subtitle">Talento & Cultura | Universidad San Ignacio de Loyola</p>
         </header>
+        <script>
+            (function() {
+                if (window.electronAPI && window.electronAPI.actualizarSistema) {
+                    var btn = document.getElementById('btn-actualizar-sistema');
+                    if (btn) btn.style.display = 'inline-flex';
+                }
+            })();
+
+            async function actualizarSistemaDesktop() {
+                if (!window.electronAPI || !window.electronAPI.actualizarSistema) {
+                    alert('Esta función solo está disponible en la aplicación de escritorio.');
+                    return;
+                }
+                var btn = document.getElementById('btn-actualizar-sistema');
+                var textoOriginal = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = '⏳ Buscando actualizaciones...';
+
+                if (window.electronAPI.onActualizarProgreso) {
+                    window.electronAPI.onActualizarProgreso(function(mensaje) {
+                        btn.textContent = '⏳ ' + mensaje;
+                    });
+                }
+
+                try {
+                    var resultado = await window.electronAPI.actualizarSistema();
+                    if (!resultado.ok) {
+                        alert('No se pudo actualizar el sistema:\n\n' + resultado.mensaje);
+                        btn.disabled = false;
+                        btn.textContent = textoOriginal;
+                        return;
+                    }
+                    if (!resultado.actualizado) {
+                        alert(resultado.mensaje);
+                        btn.disabled = false;
+                        btn.textContent = textoOriginal;
+                        return;
+                    }
+                    alert(resultado.mensaje + '\n\nLa aplicación se va a recargar.');
+                    window.location.reload();
+                } catch (e) {
+                    alert('Error inesperado actualizando el sistema:\n\n' + e.message);
+                    btn.disabled = false;
+                    btn.textContent = textoOriginal;
+                }
+            }
+        </script>
 
         <!-- Pantalla de inicio -->
         <div id="inicio-screen" class="screen active">

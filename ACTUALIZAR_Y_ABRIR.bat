@@ -62,9 +62,26 @@ if exist "%PROJECT_DIR%\.git" goto :actualizar
 
 if not exist "%PROJECT_DIR%" goto :clonar
 
-echo [ERROR] Ya existe una carpeta "RUBRICA" aqui pero no es un repositorio Git valido.
-echo Ruta en conflicto: %PROJECT_DIR%
-echo Renombra o elimina esa carpeta y vuelve a intentar.
+:: Existe una carpeta "RUBRICA" pero no es un repositorio Git valido (por
+:: ejemplo, restos de una prueba anterior). Si esta vacia, clonamos ahi
+:: directo. Si tiene contenido, la RENOMBRAMOS (no la borramos, por si
+:: tiene algo util) y clonamos una copia limpia, para que este .bat
+:: funcione solo en cualquier PC sin necesitar intervencion manual.
+set "IS_EMPTY=1"
+for /f %%x in ('dir /b "%PROJECT_DIR%" 2^>nul') do set "IS_EMPTY=0"
+if "%IS_EMPTY%"=="1" goto :clonar
+
+set "BACKUP_NAME=RUBRICA_backup_%RANDOM%"
+echo [AVISO] Encontre una carpeta "RUBRICA" que no es un repositorio Git valido.
+echo Ruta: %PROJECT_DIR%
+echo La voy a renombrar a "%BACKUP_NAME%" (por si tiene algo util) y descargar una copia nueva.
+echo.
+
+ren "%PROJECT_DIR%" "%BACKUP_NAME%"
+if not errorlevel 1 goto :clonar
+color 0C
+echo [ERROR] No se pudo renombrar la carpeta "RUBRICA" existente.
+echo Cierra cualquier programa que la este usando (Explorador, la app abierta, etc.) e intenta de nuevo.
 pause
 exit /b 1
 
