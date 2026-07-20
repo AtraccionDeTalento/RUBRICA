@@ -152,13 +152,38 @@ for /f "delims=" %%i in ('git log -1 --date^=format:"%%Y-%%m-%%d %%H:%%M" --pret
 echo --------------------------------------------------------------
 echo.
 
-:: --- 4) Verificar dependencias de Electron (solo la 1ra vez o si faltan) -
-if exist "node_modules\electron" goto :abrir_app
-echo Instalando motor grafico (Electron) por primera vez, esto puede tardar unos minutos...
+:: --- 4) Verificar que Electron este REALMENTE instalado (no solo la carpeta) -
+:: "node_modules\electron" puede existir pero sin el .exe real adentro si la
+:: descarga/extraccion se corto a la mitad (pasa mas seguido de lo que parece:
+:: antivirus, conexion inestable, etc.). Revisar solo que la carpeta exista no
+:: alcanza -- el .bat creeria que ya esta todo listo y "npm start" truena sin
+:: ninguna explicacion util para quien lo esta usando.
+if exist "node_modules\electron\dist\electron.exe" goto :abrir_app
+
+if not exist "node_modules\electron" goto :instalar_electron
+echo [AVISO] La instalacion de Electron parece incompleta (falta electron.exe).
+echo Voy a reinstalarla...
+echo.
+rmdir /s /q "node_modules\electron" >nul 2>&1
+
+:instalar_electron
+echo Instalando motor grafico (Electron), esto puede tardar unos minutos...
 call npm install
-if not errorlevel 1 goto :abrir_app
+if errorlevel 1 goto :error_instalacion
+
+if exist "node_modules\electron\dist\electron.exe" goto :abrir_app
+
+:error_instalacion
 color 0C
-echo [ERROR] Fallo la instalacion de dependencias. Verifica que tengas Node.js instalado:
+echo.
+echo [ERROR] No se pudo dejar Electron correctamente instalado.
+echo.
+echo Causas mas comunes: el antivirus bloquea/borra electron.exe recien
+echo extraido, la conexion se corta a medio descargar, o falta espacio en
+echo disco. Prueba desactivar el antivirus un momento y vuelve a ejecutar
+echo este mismo archivo .bat.
+echo.
+echo Tambien confirma que tengas Node.js instalado:
 echo   https://nodejs.org/
 pause
 exit /b 1
