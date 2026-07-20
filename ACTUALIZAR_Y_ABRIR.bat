@@ -5,24 +5,26 @@ color 0B
 
 :: ======================================================================
 ::  ACTUALIZAR_Y_ABRIR.bat
-::  Un solo archivo para cualquier PC:
+::  Un solo archivo para cualquier PC, SIN necesitar Git instalado:
 ::   - Si es la PRIMERA vez (no existe el proyecto todavia): lo descarga
-::     completo desde GitHub.
-::   - Si YA existe: fuerza que quede IDENTICO a GitHub (descarta
-::     cualquier diferencia local) antes de abrir la app.
+::     completo desde GitHub (como .zip, via PowerShell).
+::   - Si YA existe: revisa si hay una version nueva y la descarga antes
+::     de abrir la app.
 ::  Puedes copiar este .bat solo (sin el resto del proyecto) a una PC
-::  nueva, ejecutarlo, y el se encarga de traer todo.
+::  nueva, ejecutarlo, y el se encarga de traer todo. Solo necesita
+::  Windows 10/11 (con PowerShell, que ya viene instalado) y Node.js
+::  para el motor grafico (Electron).
 ::
-::  NOTA TECNICA: este script evita a proposito los bloques "if (...)"
-::  de varias lineas cuando involucran rutas, porque si la carpeta
-::  donde se guarda el .bat tiene un parentesis en el nombre (algo que
-::  Windows genera solo, ej. "Descargas (1)" o "Nueva carpeta (2)"),
-::  ese ")" cierra el bloque antes de tiempo y todo falla con errores
-::  raros de "ruta no encontrada". Por eso se usan comparaciones de una
-::  sola linea con goto.
+::  NOTA TECNICA: se evitan a proposito los bloques "if (...)" de varias
+::  lineas cuando involucran rutas, porque si la carpeta donde se guarda
+::  el .bat tiene un parentesis en el nombre (Windows los genera solo,
+::  ej. "Descargas (1)"), ese ")" cierra el bloque antes de tiempo y todo
+::  falla con errores raros de "ruta no encontrada". Por eso se usan
+::  comparaciones de una sola linea con goto.
 :: ======================================================================
 
-set "REPO_URL=https://github.com/AtraccionDeTalento/RUBRICA.git"
+set "REPO_SLUG=AtraccionDeTalento/RUBRICA"
+set "REPO_BRANCH=main"
 set "SCRIPT_DIR=%~dp0"
 set "SCRIPT_DIR=%SCRIPT_DIR:~0,-1%"
 
@@ -33,72 +35,63 @@ echo.
 echo Carpeta de este script: %SCRIPT_DIR%
 echo.
 
-:: --- 1) Verificar que Git este instalado -------------------------------
-git --version >nul 2>&1
-if not errorlevel 1 goto :git_ok
+:: --- 1) Verificar que PowerShell este disponible (viene con Windows) ---
+powershell -NoProfile -Command "exit 0" >nul 2>&1
+if not errorlevel 1 goto :ps_ok
 color 0C
-echo [ERROR] No tienes Git instalado en esta computadora.
-echo.
-echo Para que la actualizacion automatica funcione, instala Git desde:
-echo   https://git-scm.com/download/win
-echo.
-echo Luego vuelve a ejecutar este mismo archivo .bat
-echo.
+echo [ERROR] No se encontro PowerShell en esta PC. Es necesario para
+echo descargar la actualizacion desde GitHub.
 pause
 exit /b 1
 
-:git_ok
-:: --- 2) Detectar si ya estamos DENTRO del proyecto clonado -------------
-if not exist "%SCRIPT_DIR%\.git" goto :buscar_subcarpeta
-if not exist "%SCRIPT_DIR%\bot_evaluacion_docente\app_web.py" goto :buscar_subcarpeta
-set "PROJECT_DIR=%SCRIPT_DIR%"
-goto :actualizar
+:ps_ok
+:: --- 2) Detectar si ya estamos DENTRO del proyecto ----------------------
+if exist "%SCRIPT_DIR%\bot_evaluacion_docente\app_web.py" (
+    set "PROJECT_DIR=%SCRIPT_DIR%"
+    goto :actualizar
+)
 
-:buscar_subcarpeta
 :: --- 3) Si no, buscar/crear una subcarpeta "RUBRICA" junto a este .bat -
 set "PROJECT_DIR=%SCRIPT_DIR%\RUBRICA"
 
-if exist "%PROJECT_DIR%\.git" goto :actualizar
+if exist "%PROJECT_DIR%\bot_evaluacion_docente\app_web.py" goto :actualizar
 
-if not exist "%PROJECT_DIR%" goto :clonar
+if not exist "%PROJECT_DIR%" goto :descargar_primera_vez
 
-:: Existe una carpeta "RUBRICA" pero no es un repositorio Git valido (por
-:: ejemplo, restos de una prueba anterior). Si esta vacia, clonamos ahi
-:: directo. Si tiene contenido, la RENOMBRAMOS (no la borramos, por si
-:: tiene algo util) y clonamos una copia limpia, para que este .bat
+:: Existe una carpeta "RUBRICA" pero no parece el proyecto (por ejemplo,
+:: restos de una prueba anterior). La RENOMBRAMOS (no la borramos, por si
+:: tiene algo util) y descargamos una copia limpia, para que este .bat
 :: funcione solo en cualquier PC sin necesitar intervencion manual.
 set "IS_EMPTY=1"
 for /f %%x in ('dir /b "%PROJECT_DIR%" 2^>nul') do set "IS_EMPTY=0"
-if "%IS_EMPTY%"=="1" goto :clonar
+if "%IS_EMPTY%"=="1" goto :descargar_primera_vez
 
 set "BACKUP_NAME=RUBRICA_backup_%RANDOM%"
-echo [AVISO] Encontre una carpeta "RUBRICA" que no es un repositorio Git valido.
+echo [AVISO] Encontre una carpeta "RUBRICA" que no parece el proyecto valido.
 echo Ruta: %PROJECT_DIR%
 echo La voy a renombrar a "%BACKUP_NAME%" (por si tiene algo util) y descargar una copia nueva.
 echo.
 
 ren "%PROJECT_DIR%" "%BACKUP_NAME%"
-if not errorlevel 1 goto :clonar
+if not errorlevel 1 goto :descargar_primera_vez
 color 0C
 echo [ERROR] No se pudo renombrar la carpeta "RUBRICA" existente.
 echo Cierra cualquier programa que la este usando (Explorador, la app abierta, etc.) e intenta de nuevo.
 pause
 exit /b 1
 
-:clonar
-echo Primera vez en esta PC: descargando el proyecto completo...
-echo   Origen: %REPO_URL%
+:descargar_primera_vez
+echo Primera vez en esta PC: descargando el proyecto completo desde GitHub...
 echo   Destino: %PROJECT_DIR%
 echo.
-
-git clone "%REPO_URL%" "%PROJECT_DIR%"
-if not errorlevel 1 goto :clon_ok
-color 0C
-echo [ERROR] No se pudo descargar el proyecto. Revisa tu conexion a internet.
-pause
-exit /b 1
-
-:clon_ok
+mkdir "%PROJECT_DIR%" >nul 2>&1
+call :descargar_y_extraer "%PROJECT_DIR%"
+if errorlevel 1 (
+    color 0C
+    echo [ERROR] No se pudo descargar el proyecto. Revisa tu conexion a internet.
+    pause
+    exit /b 1
+)
 echo.
 echo [OK] Proyecto descargado correctamente.
 echo.
@@ -106,49 +99,53 @@ goto :mostrar_version
 
 :actualizar
 echo Proyecto encontrado en: %PROJECT_DIR%
-echo Forzando sincronizacion con GitHub...
+echo Revisando si hay una version nueva en GitHub...
 echo.
-cd /d "%PROJECT_DIR%"
 
-:: IMPORTANTE: no confiar en la salida de "git fetch" en silencio. Si
-:: internet falla, un firewall bloquea github.com, o hay cualquier otro
-:: problema, ESTO DEBE DETENER el proceso con un error visible en vez de
-:: seguir como si ya estuviera actualizado (bug de una version anterior).
-git fetch origin main
-if not errorlevel 1 goto :fetch_ok
+set "LOCAL_SHA="
+if exist "%PROJECT_DIR%\.version_commit" (
+    set /p LOCAL_SHA=<"%PROJECT_DIR%\.version_commit"
+)
+
+set "REMOTE_SHA="
+for /f "delims=" %%s in ('powershell -NoProfile -Command "try { (Invoke-RestMethod -Uri 'https://api.github.com/repos/%REPO_SLUG%/commits/%REPO_BRANCH%' -Headers @{'User-Agent'='RUBRICA-updater'}).sha } catch { 'ERROR' }"') do set "REMOTE_SHA=%%s"
+
+if not "%REMOTE_SHA%"=="ERROR" if not "%REMOTE_SHA%"=="" goto :sha_ok
 color 0C
-echo.
 echo [ERROR] No se pudo conectar con GitHub para revisar actualizaciones.
 echo Verifica tu conexion a internet e intenta de nuevo.
-cd /d "%SCRIPT_DIR%"
 pause
 exit /b 1
 
-:fetch_ok
-:: Forzar que la carpeta local quede EXACTAMENTE igual a GitHub,
-:: descartando cualquier archivo modificado localmente. Esto evita que
-:: un "git pull" normal se quede a medias por conflictos y el usuario
-:: termine viendo una version vieja sin darse cuenta.
-git reset --hard origin/main
-if not errorlevel 1 goto :reset_ok
-color 0C
-echo [ERROR] No se pudo sincronizar con la version de GitHub.
-cd /d "%SCRIPT_DIR%"
-pause
-exit /b 1
+:sha_ok
+if "%LOCAL_SHA%"=="%REMOTE_SHA%" (
+    echo [OK] Ya tienes la ultima version instalada.
+    goto :mostrar_version
+)
 
-:reset_ok
-git clean -fd >nul 2>&1
+echo Hay una version nueva. Descargando...
+call :descargar_y_extraer "%PROJECT_DIR%"
+if errorlevel 1 (
+    color 0C
+    echo [ERROR] No se pudo descargar la actualizacion. Revisa tu conexion a internet.
+    pause
+    exit /b 1
+)
 echo.
-echo [OK] Proyecto sincronizado con GitHub.
+echo [OK] Proyecto actualizado a la ultima version.
 echo.
+goto :mostrar_version
 
 :mostrar_version
 cd /d "%PROJECT_DIR%"
 
-:: --- Mostrar version instalada, para poder confirmar a simple vista ---
 echo --------------------------------------------------------------
-for /f "delims=" %%i in ('git log -1 --date^=format:"%%Y-%%m-%%d %%H:%%M" --pretty^=format:"%%h  %%ad  %%s"') do echo   Version instalada: %%i
+if exist "%PROJECT_DIR%\.version_commit" (
+    set /p VERSION_MOSTRAR=<"%PROJECT_DIR%\.version_commit"
+    echo   Version instalada (commit^): !VERSION_MOSTRAR:~0,7!
+) else (
+    echo   Version instalada: desconocida
+)
 echo --------------------------------------------------------------
 echo.
 
@@ -197,3 +194,36 @@ call npm start
 echo.
 echo La aplicacion se cerro.
 pause
+exit /b 0
+
+:: ========================================================================
+::  Descarga el .zip del repo (rama main) y lo extrae dentro de %1,
+::  sobrescribiendo los archivos que ya existan. No usa Git para nada,
+::  solo PowerShell (Invoke-WebRequest + Expand-Archive, ambos incluidos
+::  en Windows). Guarda el commit descargado en ".version_commit" dentro
+::  del proyecto para poder comparar versiones la proxima vez.
+:: ========================================================================
+:descargar_y_extraer
+set "DEST_DIR=%~1"
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$ErrorActionPreference='Stop';" ^
+  "$dest = '%DEST_DIR%';" ^
+  "$zipUrl = 'https://github.com/%REPO_SLUG%/archive/refs/heads/%REPO_BRANCH%.zip';" ^
+  "$tmpZip = Join-Path $env:TEMP ('rubrica_update_' + [guid]::NewGuid().ToString() + '.zip');" ^
+  "$tmpDir = Join-Path $env:TEMP ('rubrica_extract_' + [guid]::NewGuid().ToString());" ^
+  "try {" ^
+  "  Invoke-WebRequest -Uri $zipUrl -OutFile $tmpZip -UseBasicParsing;" ^
+  "  Expand-Archive -Path $tmpZip -DestinationPath $tmpDir -Force;" ^
+  "  $srcFolder = Get-ChildItem -Path $tmpDir -Directory | Select-Object -First 1;" ^
+  "  Copy-Item -Path (Join-Path $srcFolder.FullName '*') -Destination $dest -Recurse -Force;" ^
+  "  $commitInfo = Invoke-RestMethod -Uri ('https://api.github.com/repos/%REPO_SLUG%/commits/%REPO_BRANCH%') -Headers @{'User-Agent'='RUBRICA-updater'};" ^
+  "  Set-Content -Path (Join-Path $dest '.version_commit') -Value $commitInfo.sha -NoNewline;" ^
+  "  exit 0;" ^
+  "} catch {" ^
+  "  Write-Error $_;" ^
+  "  exit 1;" ^
+  "} finally {" ^
+  "  Remove-Item $tmpZip -Force -ErrorAction SilentlyContinue;" ^
+  "  Remove-Item $tmpDir -Recurse -Force -ErrorAction SilentlyContinue;" ^
+  "}"
+exit /b %errorlevel%
