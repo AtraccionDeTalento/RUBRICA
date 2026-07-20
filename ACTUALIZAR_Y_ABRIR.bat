@@ -259,25 +259,64 @@ exit /b 0
 :: ========================================================================
 :descargar_y_extraer
 set "DEST_DIR=%~1"
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$ErrorActionPreference='Stop';" ^
-  "$dest = '%DEST_DIR%';" ^
-  "$zipUrl = 'https://github.com/%REPO_SLUG%/archive/refs/heads/%REPO_BRANCH%.zip';" ^
-  "$tmpZip = Join-Path $env:TEMP ('rubrica_update_' + [guid]::NewGuid().ToString() + '.zip');" ^
-  "$tmpDir = Join-Path $env:TEMP ('rubrica_extract_' + [guid]::NewGuid().ToString());" ^
-  "try {" ^
-  "  Invoke-WebRequest -Uri $zipUrl -OutFile $tmpZip -UseBasicParsing;" ^
-  "  Expand-Archive -Path $tmpZip -DestinationPath $tmpDir -Force;" ^
-  "  $srcFolder = Get-ChildItem -Path $tmpDir -Directory | Select-Object -First 1;" ^
-  "  Copy-Item -Path (Join-Path $srcFolder.FullName '*') -Destination $dest -Recurse -Force;" ^
-  "  $commitInfo = Invoke-RestMethod -Uri ('https://api.github.com/repos/%REPO_SLUG%/commits/%REPO_BRANCH%') -Headers @{'User-Agent'='RUBRICA-updater'};" ^
-  "  Set-Content -Path (Join-Path $dest '.version_commit') -Value $commitInfo.sha -NoNewline;" ^
-  "  exit 0;" ^
-  "} catch {" ^
-  "  Write-Error $_;" ^
-  "  exit 1;" ^
-  "} finally {" ^
-  "  Remove-Item $tmpZip -Force -ErrorAction SilentlyContinue;" ^
-  "  Remove-Item $tmpDir -Recurse -Force -ErrorAction SilentlyContinue;" ^
-  "}"
-exit /b %errorlevel%
+set "PS1_TEMP=%TEMP%\rubrica_actualizar_%RANDOM%.ps1"
+
+:: Se genera un archivo .ps1 aparte en vez de meter todo el script de
+:: PowerShell en una sola linea "-Command" con muchos "^" -- un bloque tan
+:: largo corrompe el buffer de lectura de cmd.exe para el resto del .bat
+:: (se vieron errores raros como "etlocal no reconocido" en TODO el
+:: archivo, no solo en esta parte). Escribir un .ps1 real y llamarlo con
+:: -File evita ese problema por completo.
+(
+echo param^([string]$Dest, [string]$RepoSlug, [string]$Branch^)
+echo $zipUrl = "https://github.com/$RepoSlug/archive/refs/heads/$Branch.zip"
+echo $tmpZip = Join-Path $env:TEMP ^('rubrica_update_' + [guid]::NewGuid^(^).ToString^(^) + '.zip'^)
+echo $tmpDir = Join-Path $env:TEMP ^('rubrica_extract_' + [guid]::NewGuid^(^).ToString^(^)^)
+echo try {
+echo   try {
+echo     Invoke-WebRequest -Uri $zipUrl -OutFile $tmpZip -UseBasicParsing -ErrorAction Stop
+echo     Expand-Archive -Path $tmpZip -DestinationPath $tmpDir -Force -ErrorAction Stop
+echo   } catch {
+echo     Write-Output ^('ERROR-DESCARGA: ' + $_.Exception.Message^)
+echo     exit 1
+echo   }
+echo   $srcFolder = Get-ChildItem -Path $tmpDir -Directory ^| Select-Object -First 1
+echo   $archivos = Get-ChildItem -Path $srcFolder.FullName -Recurse -File
+echo   $fallidos = @^(^)
+echo   foreach ^($f in $archivos^) {
+echo     $rel = $f.FullName.Substring^($srcFolder.FullName.Length + 1^)
+echo     $destino = Join-Path $Dest $rel
+echo     try {
+echo       New-Item -ItemType Directory -Path ^(Split-Path $destino^) -Force -ErrorAction Stop ^| Out-Null
+echo       if ^((Test-Path $destino^) -and ^((Get-Item $destino^).Attributes -band [IO.FileAttributes]::ReadOnly^)^) {
+echo         ^(Get-Item $destino^).Attributes = ^(Get-Item $destino^).Attributes -band ^(-bnot [IO.FileAttributes]::ReadOnly^)
+echo       }
+echo       Copy-Item -Path $f.FullName -Destination $destino -Force -ErrorAction Stop
+echo     } catch {
+echo       $fallidos += ^('{0} ^({1}^)' -f $rel, $_.Exception.Message^)
+echo       Write-Output ^('AVISO: no se pudo actualizar ' + $rel + ' - ' + $_.Exception.Message^)
+echo     }
+echo   }
+echo   try {
+echo     $commitInfo = Invoke-RestMethod -Uri ^("https://api.github.com/repos/$RepoSlug/commits/$Branch"^) -Headers @{'User-Agent'='RUBRICA-updater'} -ErrorAction Stop
+echo     Set-Content -Path ^(Join-Path $Dest '.version_commit'^) -Value $commitInfo.sha -NoNewline -ErrorAction Stop
+echo   } catch {
+echo     Write-Output ^('AVISO: no se pudo guardar el marcador de version - ' + $_.Exception.Message^)
+echo   }
+echo   if ^($fallidos.Count -gt 0^) {
+echo     Write-Output ^('RESUMEN: ' + $fallidos.Count + ' de ' + $archivos.Count + ' archivo^(s^) no se pudieron actualizar.'^)
+echo     Write-Output 'Si esto se repite, revisa Windows Security ^> Proteccion contra ransomware ^> Acceso a carpetas controlado, o el antivirus de esta PC.'
+echo   } else {
+echo     Write-Output ^('OK: ' + $archivos.Count + ' archivo^(s^) actualizados.'^)
+echo   }
+echo   exit 0
+echo } finally {
+echo   Remove-Item $tmpZip -Force -ErrorAction SilentlyContinue
+echo   Remove-Item $tmpDir -Recurse -Force -ErrorAction SilentlyContinue
+echo }
+) > "%PS1_TEMP%"
+
+powershell -NoProfile -ExecutionPolicy Bypass -File "%PS1_TEMP%" -Dest "%DEST_DIR%" -RepoSlug "%REPO_SLUG%" -Branch "%REPO_BRANCH%"
+set "PS1_EXIT=%errorlevel%"
+del "%PS1_TEMP%" >nul 2>&1
+exit /b %PS1_EXIT%

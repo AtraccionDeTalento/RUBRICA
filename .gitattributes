@@ -1,0 +1,6 @@
+# Los archivos .bat SIEMPRE deben llevar fin de linea CRLF (Windows), sin
+# importar el sistema operativo de quien los edite o el de quien descargue
+# el .zip desde GitHub. Sin esto, un archivo guardado con LF puede hacer
+# que cmd.exe falle al interpretarlo en ciertas PCs (parser corrupto,
+# comandos truncados) para scripts largos con muchas etiquetas/goto.
+*.bat text eol=crlf
